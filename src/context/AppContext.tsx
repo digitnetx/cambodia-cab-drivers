@@ -40,6 +40,7 @@ interface AppContextType {
   // Auth state
   isAdminLoggedIn: boolean;
   isAdminAuthenticated: boolean;
+  adminDisplayName: string;
   loginAdmin: (email: string, password: string) => Promise<boolean>;
   logoutAdmin: () => void;
   
@@ -131,6 +132,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 const LOCAL_STORAGE_KEY = 'cambodia_cab_drivers_state_v5';
 const LANG_KEY = 'cambodia_cab_drivers_lang';
 const isUuid = (value?: string) => Boolean(value && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value));
+const displayNameFromEmail = (email?: string) => (email || 'Admin').split('@')[0].split(/[._-]+/).filter(Boolean).map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ') || 'Admin';
 
 const adminLoginError = (message?: string) => {
   const text = (message || '').toLowerCase();
@@ -144,6 +146,7 @@ const adminLoginError = (message?: string) => {
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname || '/');
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState<boolean>(false);
+  const [adminDisplayName, setAdminDisplayName] = useState('Admin');
 
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem(LANG_KEY);
@@ -250,7 +253,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     supabase.auth.getSession().then(async ({ data }) => {
       if (!data.session || !active) return;
       const { data: isAdmin } = await supabase.rpc('is_admin');
-      if (active && isAdmin) setIsAdminLoggedIn(true);
+      if (active && isAdmin) {
+        setAdminDisplayName(displayNameFromEmail(data.session.user.email));
+        setIsAdminLoggedIn(true);
+      }
     });
     return () => { active = false; };
   }, []);
@@ -346,7 +352,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const loginAdmin = async (email: string, pass: string): Promise<boolean> => {
     if (isSupabaseConfigured && supabase) {
       try {
-        const { error } = await supabase.auth.signInWithPassword({ email, password: pass });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
         if (error) {
           showToast(adminLoginError(error.message), 'error');
           return false;
@@ -359,8 +365,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           return false;
         }
 
+        const name = displayNameFromEmail(data.user?.email || email);
+        setAdminDisplayName(name);
         setIsAdminLoggedIn(true);
-        showToast(`Welcome back, ${siteSettings.driver_name}!`);
+        showToast(`Welcome back, ${name}!`);
         return true;
       } catch (e) {
         console.error('Supabase auth error:', e);
@@ -375,6 +383,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const logoutAdmin = () => {
     supabase?.auth.signOut().catch(() => undefined);
     setIsAdminLoggedIn(false);
+    setAdminDisplayName('Admin');
     showToast('Logged out successfully', 'info');
     navigate('/admin/login');
   };
@@ -1042,6 +1051,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         refreshDatabase,
         isAdminLoggedIn,
         isAdminAuthenticated: isAdminLoggedIn,
+        adminDisplayName,
         loginAdmin,
         logoutAdmin,
         siteSettings,

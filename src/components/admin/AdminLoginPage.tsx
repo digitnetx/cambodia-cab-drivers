@@ -4,7 +4,7 @@ import { Lock, Mail, ShieldCheck, ArrowRight } from 'lucide-react';
 import { Logo } from '../common/Logo';
 
 export const AdminLoginPage: React.FC = () => {
-  const { loginAdmin, navigate, siteSettings } = useApp();
+  const { loginAdmin, navigate } = useApp();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -39,7 +39,7 @@ export const AdminLoginPage: React.FC = () => {
           </h1>
 
           <p className="text-xs text-slate-600">
-            Sign in to manage {siteSettings.business_name || 'Cambodia Taxi Cab'}.
+            Sign in to manage Cambodia Taxi Cab.
           </p>
         </div>
 

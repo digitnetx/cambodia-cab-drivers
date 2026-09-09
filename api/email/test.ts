@@ -15,9 +15,8 @@ export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed. Please use POST." });
   }
-  if (!(await requireAdmin(req, res))) return;
-
   try {
+    if (!(await requireAdmin(req, res))) return;
     let body = req.body;
     if (typeof body === "string") {
       try {

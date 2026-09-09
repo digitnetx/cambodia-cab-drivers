@@ -9,7 +9,7 @@ import { getWhatsAppBookingUrl } from '../../lib/whatsapp';
 export const AdminDashboard: React.FC = () => {
   const { 
     bookings = [], messages = [], reviews = [], routes = [], vehicles = [], 
-    siteSettings, navigate, updateBookingStatus, approveReview, rejectReview, resetToDefaults 
+    siteSettings, adminDisplayName, navigate, updateBookingStatus, approveReview, rejectReview, resetToDefaults 
   } = useApp();
 
   const totalBookings = (bookings || []).length;
@@ -35,7 +35,7 @@ export const AdminDashboard: React.FC = () => {
             <ShieldCheck className="w-4 h-4 text-red-600" /> Live Business Control Center
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
-            Welcome, {siteSettings.driver_name}
+            Welcome, {adminDisplayName}
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1">
             All prices, routes, bookings, vehicles, and website text are dynamically controlled from here.
