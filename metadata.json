@@ -1,0 +1,6 @@
+{
+  "name": "Cambodia Taxi Cab",
+  "description": "Professional private taxi, driver fleet, airport transfers and tour transportation services across Cambodia with transparent fixed pricing on cambodiataxicab.com.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

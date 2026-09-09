@@ -1,0 +1,1331 @@
+{
+  "siteSettings": {
+    "id": "settings-1",
+    "business_name": "Cambodia Taxi Cab",
+    "driver_name": "Our Driver Team",
+    "tagline": "Reliable Private Taxi & Tour Driver Service in Cambodia",
+    "description": "Welcome to Cambodia Taxi Cab (cambodiataxicab.com). A professional team of experienced English-speaking private drivers offering 24/7 airport transfers, intercity taxi rides, and custom sightseeing tours across Phnom Penh, Siem Reap, Sihanoukville, Kampot, and beyond.",
+    "phone": "+855 16 509 371",
+    "whatsapp": "+855 16 509 371",
+    "telegram": "+855 16 509 371",
+    "email": "digitnetx@gmail.com",
+    "address": "#61, Oknha Chrun Youhak (294), Boeung Keng Kang I, Chamkarmon, Phnom Penh 12302, Cambodia",
+    "working_hours": "24/7 Available (Advance Booking & Flight Monitoring)",
+    "emergency_contact": "+855 16 509 371",
+    "logo_url": "/logo.svg",
+    "favicon_url": "/logo-icon.svg",
+    "facebook_url": "https://facebook.com/cambodiataxicab",
+    "instagram_url": "https://instagram.com/cambodiataxicab",
+    "tiktok_url": "https://tiktok.com/@cambodiataxicab",
+    "telegram_url": "https://t.me/85516509371",
+    "youtube_url": "https://youtube.com",
+    "google_maps_url": "https://maps.google.com/?q=Boeung+Keng+Kang+I+Phnom+Penh+Cambodia",
+    "google_business_url": "https://maps.google.com/?q=Cambodia+Taxi+Cab+Phnom+Penh",
+    "primary_color": "#1d4ed8",
+    "accent_color": "#f59e0b",
+    "footer_description": "Cambodia Taxi Cab (cambodiataxicab.com) is your trusted private transportation partner in the Kingdom of Wonder. Enjoy fixed transparent rates, clean modern vehicles, and personalized service with our professional English-speaking drivers.",
+    "copyright_text": "© 2026 cambodiataxicab.com. All rights reserved.",
+    "booking_form_settings": {
+      "enable_flight_number": true,
+      "enable_hotel_name": true,
+      "enable_special_requests": true,
+      "enable_luggage_counter": true,
+      "enable_whatsapp_field": true,
+      "require_email": true,
+      "require_phone": true,
+      "default_passengers": 2,
+      "default_vehicle": "Sedan"
+    },
+    "currency_settings": {
+      "default_currency": "USD",
+      "currency_symbol": "$",
+      "supported_currencies": [
+        "USD",
+        "KHR",
+        "EUR",
+        "GBP"
+      ]
+    },
+    "smtp_settings": {
+      "smtp_user": "digitnetx@gmail.com",
+      "smtp_password": "",
+      "admin_notification_email": "digitnetx@gmail.com",
+      "smtp_host": "smtp.gmail.com",
+      "smtp_port": "465",
+      "is_enabled": true
+    },
+    "updated_at": "2026-09-02T17:30:46.575Z"
+  },
+  "homepageSettings": {
+    "hero": {
+      "badge": "Private Taxi & Driver Service in Cambodia",
+      "title": "Private Taxi & Driver Service in Cambodia",
+      "subtitle": "Airport Transfers • Phnom Penh • Siem Reap • Sihanoukville • Private Tours",
+      "description": "Direct door-to-door private transfers with our professional English-speaking drivers. Fixed transparent prices, ice-cold AC vehicles, and complimentary flight delay tracking.",
+      "background_image": "/background.webp",
+      "slide_interval_seconds": 5,
+      "primary_btn_text": "BOOK YOUR RIDE / GET QUOTE",
+      "primary_btn_link": "/book",
+      "secondary_btn_text": "VIEW POPULAR ROUTES & PRICES",
+      "secondary_btn_link": "/transfers",
+      "whatsapp_btn_text": "WhatsApp Direct Chat",
+      "whatsapp_message": "Hello Cambodia Taxi Cab, I am planning a trip to Cambodia and would like to inquire about your taxi and driver services.",
+      "rating_text": "5.0 Star Rated on Google Reviews",
+      "rating_subtext": "Over 1,800+ happy international travelers",
+      "price_guarantee_text": "100% Fixed Price Guarantee (No hidden tolls)",
+      "experience_text": "10+ Years Safe Driving Experience in Cambodia"
+    },
+    "sections": [
+      {
+        "id": "sec-1",
+        "key": "hero",
+        "title": "Hero Banner",
+        "subtitle": "Main landing intro",
+        "is_enabled": true,
+        "display_order": 1
+      },
+      {
+        "id": "sec-2",
+        "key": "booking_widget",
+        "title": "Fast Booking Widget",
+        "subtitle": "Interactive instant price & booking form",
+        "is_enabled": true,
+        "display_order": 2
+      },
+      {
+        "id": "sec-3",
+        "key": "trust_bar",
+        "title": "Trust & Safety Badges",
+        "subtitle": "Highlight licenses, ratings & guarantees",
+        "is_enabled": true,
+        "display_order": 3
+      },
+      {
+        "id": "sec-4",
+        "key": "services",
+        "title": "Our Transportation Services",
+        "subtitle": "Airport, city taxi, overland & tours",
+        "is_enabled": true,
+        "display_order": 4
+      },
+      {
+        "id": "sec-5",
+        "key": "airport_transfers",
+        "title": "Airport Transfers (PNH & SAI)",
+        "subtitle": "Fixed price flight pickup packages",
+        "is_enabled": true,
+        "display_order": 5
+      },
+      {
+        "id": "sec-6",
+        "key": "popular_routes",
+        "title": "Popular Taxi Routes & Pricing",
+        "subtitle": "Transparent intercity pricing table",
+        "is_enabled": true,
+        "display_order": 6
+      },
+      {
+        "id": "sec-7",
+        "key": "vehicles",
+        "title": "Our Vehicle Fleet",
+        "subtitle": "Sedan, SUV and Van selections",
+        "is_enabled": true,
+        "display_order": 7
+      },
+      {
+        "id": "sec-8",
+        "key": "tours",
+        "title": "Private Sightseeing Tours",
+        "subtitle": "Angkor Wat, Phnom Penh & coastal trips",
+        "is_enabled": true,
+        "display_order": 8
+      },
+      {
+        "id": "sec-9",
+        "key": "destinations",
+        "title": "Cambodia Destinations",
+        "subtitle": "Highlights across the Kingdom",
+        "is_enabled": true,
+        "display_order": 9
+      },
+      {
+        "id": "sec-10",
+        "key": "driver_profile",
+        "title": "Our Professional Driver Fleet",
+        "subtitle": "Experience, certifications & team standards",
+        "is_enabled": true,
+        "display_order": 10
+      },
+      {
+        "id": "sec-11",
+        "key": "why_choose_us",
+        "title": "Why Book Direct With Us",
+        "subtitle": "Direct driver advantages vs platforms",
+        "is_enabled": true,
+        "display_order": 11
+      },
+      {
+        "id": "sec-12",
+        "key": "reviews",
+        "title": "Google Traveler Reviews",
+        "subtitle": "Real 5-star customer testimonials",
+        "is_enabled": true,
+        "display_order": 12
+      },
+      {
+        "id": "sec-13",
+        "key": "faq",
+        "title": "Frequently Asked Questions",
+        "subtitle": "Clear answers on pricing, payment & booking",
+        "is_enabled": true,
+        "display_order": 13
+      },
+      {
+        "id": "sec-14",
+        "key": "driver_cta",
+        "title": "Private Driver Call to Action",
+        "subtitle": "Arriving soon? Secure your ride",
+        "is_enabled": true,
+        "display_order": 14
+      },
+      {
+        "id": "sec-15",
+        "key": "whatsapp_cta",
+        "title": "Floating WhatsApp CTA",
+        "subtitle": "Instant 1-click driver chat",
+        "is_enabled": true,
+        "display_order": 15
+      }
+    ]
+  },
+  "driverProfile": {
+    "id": "driver-team",
+    "driver_name": "Mr. Sareth & Professional Driver Team",
+    "title": "Licensed English-Speaking Tourist Driver & Chauffeur Fleet in Cambodia",
+    "greeting": "Welcome to Cambodia Taxi Cab!",
+    "bio_paragraph_1": "Welcome to Cambodia Taxi Cab (cambodiataxicab.com)! My name is Sareth, leading our dedicated team of professional, licensed, and English-speaking private drivers based in Phnom Penh and Siem Reap with over 10 years of collective experience chauffeuring international tourists, business travelers, and families across Cambodia.",
+    "bio_paragraph_2": "Our team mission is making your journey stress-free, safe, and comfortable. We maintain a modern fleet of cold air-conditioned sedans, SUVs, and executive vans. We take pride in punctual airport pickups, smooth overland transfers, and sharing authentic cultural insights along the way.",
+    "years_experience": 10,
+    "languages": [
+      "English (Fluent)",
+      "Khmer (Native)"
+    ],
+    "license_info": "Ministry of Public Works and Transport Official Tourist Driving Certification",
+    "profile_photo_url": "/sareth.jpeg",
+    "cover_photo_url": "/sareth.jpeg",
+    "phone": "+855 16 509 371",
+    "whatsapp": "+855 16 509 371",
+    "telegram": "+855 16 509 371",
+    "rating": 5,
+    "trips_completed": 1850,
+    "qualifications": [
+      "10+ Years Professional Driving Record with Zero Accidents",
+      "Official Licensed & Registered Tourist Drivers in Cambodia",
+      "Certified First Aid & Safe Road Transport Training",
+      "Fluent English for Effortless Coordination and Guidance"
+    ],
+    "vehicle_info": "Modern Sedan (Toyota Camry/Prius), Luxury SUV (Lexus RX300/Highlander), and Executive Minivans (Toyota Alphard/HiAce).",
+    "why_choose_driver": [
+      "Always on time with real-time flight delay monitoring",
+      "Fixed transparent prices — no hidden fees or meter tricks",
+      "Flexible stops for coffee, food, and scenic photo spots",
+      "Friendly, courteous, and respectful of your travel pace"
+    ],
+    "updated_at": "2026-09-02T17:30:46.576Z"
+  },
+  "seoSettings": {
+    "meta_title": "Cambodia Taxi Cab — Private Taxi & Tour Driver Service in Cambodia",
+    "meta_description": "Book reliable private taxi transfers, Phnom Penh & Siem Reap airport pickups, overland transfers, and custom sightseeing tours with our professional English-speaking drivers on cambodiataxicab.com.",
+    "keywords": [
+      "cambodiataxicab.com",
+      "Cambodia taxi cab",
+      "Cambodia private taxi",
+      "Phnom Penh airport transfer",
+      "Siem Reap airport taxi",
+      "Phnom Penh to Siem Reap taxi",
+      "Cambodia private driver",
+      "Angkor Wat private tour driver",
+      "Cambodia taxi drivers",
+      "Phnom Penh to Sihanoukville taxi",
+      "English speaking driver Cambodia"
+    ],
+    "og_title": "Cambodia Taxi Cab — Private Taxi & Driver Service in Cambodia",
+    "og_description": "Direct door-to-door private transfers, fixed transparent prices, modern AC vehicles, and 24/7 flight delay monitoring across Cambodia on cambodiataxicab.com.",
+    "og_image": "/background.webp",
+    "canonical_url": "https://cambodiataxicab.com",
+    "index_site": true
+  },
+  "whyChooseUs": [
+    {
+      "id": "benefit-1",
+      "title": "No Platform Commissions",
+      "description": "Save 15% to 25% compared to online travel agencies and hotel tour desks by booking directly with our driver team.",
+      "icon": "DollarSign",
+      "badge": "Direct Savings",
+      "display_order": 1,
+      "is_active": true
+    },
+    {
+      "id": "benefit-2",
+      "title": "Fixed Transparent Prices",
+      "description": "Zero hidden expressway tolls, parking fees, or fuel surcharges. What you are quoted is exactly what you pay.",
+      "icon": "ShieldCheck",
+      "badge": "Fixed Rates",
+      "display_order": 2,
+      "is_active": true
+    },
+    {
+      "id": "benefit-3",
+      "title": "Direct WhatsApp Coordination",
+      "description": "Message our team directly on WhatsApp before your flight departs. Get immediate pickup instructions and driver details.",
+      "icon": "MessageSquare",
+      "badge": "Fast Reply",
+      "display_order": 3,
+      "is_active": true
+    },
+    {
+      "id": "benefit-4",
+      "title": "Local English-Speaking Driver",
+      "description": "Fluent English communication makes custom sightseeing, temple stops, and itinerary changes seamless and enjoyable.",
+      "icon": "Award",
+      "badge": "Fluent English",
+      "display_order": 4,
+      "is_active": true
+    },
+    {
+      "id": "benefit-5",
+      "title": "Spotless AC & Cold Water",
+      "description": "Clean, sanitized modern vehicles equipped with high-powered air conditioning, phone charging, and complimentary cold water.",
+      "icon": "Sparkles",
+      "badge": "Maximum Comfort",
+      "display_order": 5,
+      "is_active": true
+    },
+    {
+      "id": "benefit-6",
+      "title": "100% Flexible Custom Stops",
+      "description": "Need a rest stop, fresh coconut, roadside snack, or sunrise photo opportunity? You set the schedule on private rides.",
+      "icon": "Clock",
+      "badge": "Your Pace",
+      "display_order": 6,
+      "is_active": true
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-1",
+      "name": "Airport Transfers",
+      "slug": "airport-transfers",
+      "short_description": "Convenient airport pickup and drop-off services at Phnom Penh International Airport and Siem Reap Angkor International Airport.",
+      "description": "Avoid waiting in taxi lines or dealing with inflated airport rates. Our professional driver will monitor your arrival flight, meet you with a personalized name card inside the arrivals terminal, assist with your luggage, and provide a comfortable, climate-controlled ride directly to your hotel.",
+      "icon": "Plane",
+      "featured_image": "/back4.webp",
+      "starting_price": 15,
+      "currency": "USD",
+      "features": [
+        "Flight delay monitoring",
+        "Terminal meet & greet with name card",
+        "Luggage assistance",
+        "Fixed pricing with tolls included"
+      ],
+      "included_items": [
+        "Air-conditioned vehicle",
+        "Fuel and airport parking",
+        "Cold bottled water",
+        "English-speaking driver"
+      ],
+      "cta_text": "Book Airport Transfer",
+      "cta_link": "/airport-transfers",
+      "is_featured": true,
+      "is_active": true,
+      "sort_order": 1,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "srv-2",
+      "name": "Phnom Penh City Taxi",
+      "slug": "phnom-penh-taxi",
+      "short_description": "Comfortable private taxi transportation around Phnom Penh for shopping, business meetings, dining, and sightseeing.",
+      "description": "Navigate the vibrant streets of Phnom Penh effortlessly. Whether you need a point-to-point city transfer, an hourly ride for business, or an evening driver for dinner and nightlife, enjoy prompt and reliable service with a courteous local driver.",
+      "icon": "Car",
+      "featured_image": "/background.webp",
+      "starting_price": 12,
+      "currency": "USD",
+      "features": [
+        "Hourly and point-to-point service",
+        "Cool AC sanctuary from tropical heat",
+        "Safe driving in city traffic",
+        "Door-to-door hotel pickup"
+      ],
+      "included_items": [
+        "Private vehicle",
+        "City fuel",
+        "Drinking water",
+        "Driver waiting time"
+      ],
+      "cta_text": "Hire City Taxi",
+      "cta_link": "/book",
+      "is_featured": true,
+      "is_active": true,
+      "sort_order": 2,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "srv-3",
+      "name": "City-to-City Overland Transfers",
+      "slug": "city-to-city-transfers",
+      "short_description": "Seamless private overland travel between destinations across Cambodia like Phnom Penh, Siem Reap, Kampot, and Kep.",
+      "description": "Travel safely and comfortably between major Cambodian destinations without crowded buses or rigid public transport schedules. Rest stops, photo opportunities, and scenic detours can easily be arranged along the journey.",
+      "icon": "Navigation",
+      "featured_image": "/back5.jpg",
+      "starting_price": 55,
+      "currency": "USD",
+      "features": [
+        "Expressway and highway travel",
+        "Rest stops at local eateries",
+        "No luggage limits",
+        "Door-to-door service across provinces"
+      ],
+      "included_items": [
+        "Expressway tolls",
+        "Fuel",
+        "Cold water",
+        "Luggage loading"
+      ],
+      "cta_text": "View Route Prices",
+      "cta_link": "/transfers",
+      "is_featured": true,
+      "is_active": true,
+      "sort_order": 3,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "srv-4",
+      "name": "Private Driver for Tours & Sightseeing",
+      "slug": "private-driver-cambodia",
+      "short_description": "Dedicated private vehicle and English-speaking driver for full-day sightseeing, temple excursions, and multi-day journeys.",
+      "description": "Hire our dedicated private drivers for a full day or multi-day itinerary. Discover Angkor Wat, Phnom Penh monuments, Oudong Mountain, or coastal Kampot with complete freedom to explore at your own pace.",
+      "icon": "Compass",
+      "featured_image": "/bg1.jpg",
+      "starting_price": 35,
+      "currency": "USD",
+      "features": [
+        "Full day driver dedication",
+        "Local recommendations & guidance",
+        "Customizable start and end times",
+        "Cool drinks waiting after sightseeing"
+      ],
+      "included_items": [
+        "Vehicle hire with fuel",
+        "Driver guidance",
+        "Flexible schedule"
+      ],
+      "cta_text": "Book Private Driver",
+      "cta_link": "/private-driver",
+      "is_featured": true,
+      "is_active": true,
+      "sort_order": 4,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "tours": [
+    {
+      "id": "tour-1",
+      "title": "Phnom Penh Full-Day City Highlights Tour",
+      "slug": "phnom-penh-city-tour",
+      "short_description": "Explore the Royal Palace, Silver Pagoda, National Museum, Tuol Sleng (S-21), and Choeung Ek Killing Fields with an English-speaking driver.",
+      "description": "An essential full-day cultural and historical immersion through Cambodia's capital. Travel comfortably between iconic landmarks with air-conditioned breaks, cold water, and insightful historical context.",
+      "duration": "Full Day (approx. 7–8 hours)",
+      "starting_price": 45,
+      "currency": "USD",
+      "pickup_location": "Any hotel in Phnom Penh",
+      "departure_time": "08:30 AM (Flexible)",
+      "highlights": [
+        "Royal Palace & dazzling Silver Pagoda",
+        "Tuol Sleng Genocide Museum (S-21)",
+        "Choeung Ek Genocidal Center (Killing Fields)",
+        "Wat Phnom historical hilltop sanctuary",
+        "Central Market (Phsar Thmei) shopping & dining"
+      ],
+      "itinerary": [
+        {
+          "title": "08:30 AM — Hotel Pickup",
+          "description": "Meet your driver at your hotel lobby with chilled water and vehicle ready."
+        },
+        {
+          "title": "09:00 AM — Royal Palace & Silver Pagoda",
+          "description": "Tour the traditional Khmer architecture, manicured gardens, and Buddha statues."
+        },
+        {
+          "title": "11:00 AM — Tuol Sleng Genocide Museum (S-21)",
+          "description": "Insightful audio tour through the preserved historical prison."
+        },
+        {
+          "title": "12:30 PM — Khmer Lunch Break",
+          "description": "Relaxed dining at an authentic riverside restaurant or local cafe."
+        },
+        {
+          "title": "02:00 PM — Choeung Ek Genocidal Center",
+          "description": "Commemorative memorial stupa and tranquil historical grounds."
+        },
+        {
+          "title": "04:00 PM — Wat Phnom & Central Market",
+          "description": "Discover the hilltop shrine of Madame Penh followed by art deco architecture."
+        },
+        {
+          "title": "05:00 PM — Return to Hotel",
+          "description": "Drop-off at your hotel or preferred evening dinner location."
+        }
+      ],
+      "included": [
+        "Private AC vehicle throughout the day",
+        "Fuel, parking & road charges",
+        "Cold bottled water & refresher wipes",
+        "English-speaking driver assistance"
+      ],
+      "excluded": [
+        "Monument entrance tickets (~$10 Royal Palace, ~$5 S-21, ~$6 Killing Fields)",
+        "Audio guide devices",
+        "Meals and personal purchases"
+      ],
+      "important_information": [
+        "Modest dress required: shoulders and knees must be covered for Royal Palace and religious sites."
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=1200&auto=format&fit=crop"
+      ],
+      "vehicle_type": "Sedan / SUV / Van",
+      "max_passengers": 10,
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "tour-2",
+      "title": "Angkor Wat Sunrise & Grand Circuit Temple Tour",
+      "slug": "angkor-wat-sunrise-temple-tour",
+      "short_description": "Experience magical dawn over Angkor Wat, Bayon smiling stone faces, Ta Prohm jungle temple, and Banteay Srei with private driver flexibility.",
+      "description": "Witness the iconic sunrise reflecting over the lotus ponds of Angkor Wat. Your experienced driver will navigate the temple circuits to help you beat large tour bus crowds and provide ice-cold AC breaks between explorations.",
+      "duration": "Full Day (approx. 8–9 hours)",
+      "starting_price": 40,
+      "currency": "USD",
+      "pickup_location": "Any hotel in Siem Reap",
+      "departure_time": "04:45 AM for Sunrise",
+      "highlights": [
+        "Unforgettable dawn sunrise at Angkor Wat",
+        "Bayon Temple with enigmatic smiling stone faces",
+        "Ta Prohm — the famous Tomb Raider tree-root temple",
+        "Baphuon, Elephant Terrace & Terrace of the Leper King",
+        "Ice-cold bottled water and AC refreshment between temples"
+      ],
+      "itinerary": [
+        {
+          "title": "04:45 AM — Early Hotel Departure",
+          "description": "Early start to reach prime sunrise viewing spots at Angkor Wat reflection pool."
+        },
+        {
+          "title": "05:30 AM — Sunrise at Angkor Wat",
+          "description": "Watch the morning colors illuminate the 12th-century towers."
+        },
+        {
+          "title": "07:30 AM — Angkor Thom & Bayon Temple",
+          "description": "Explore the 216 giant smiling faces of Avalokiteshvara."
+        },
+        {
+          "title": "10:30 AM — Ta Prohm (Jungle Temple)",
+          "description": "Marvel at giant strangler fig roots enveloping ancient stone walls."
+        },
+        {
+          "title": "12:30 PM — Relaxing Lunch Break",
+          "description": "Rest at a shaded local restaurant near Srah Srang reservoir."
+        },
+        {
+          "title": "02:00 PM — Banteay Kdei & Preah Khan",
+          "description": "Quiet exploration of peaceful monasteries away from midday heat."
+        },
+        {
+          "title": "04:30 PM — Hotel Return / Pub Street Drop-off",
+          "description": "Safe return to hotel or evening spot for dinner and foot massage."
+        }
+      ],
+      "included": [
+        "Private AC vehicle throughout the day",
+        "Ice-cold bottled water and cold towels",
+        "Flexible timing and custom photo stops",
+        "English-speaking driver assistance"
+      ],
+      "excluded": [
+        "Angkor Archaeological Park Pass ($37 1-day pass)",
+        "Tour guide (available on request)",
+        "Meals and drinks"
+      ],
+      "important_information": [
+        "Angkor Pass can be bought online in advance or at the official ticket center. Dress respectfully covering shoulders and knees."
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+      ],
+      "vehicle_type": "Sedan / SUV / Van",
+      "max_passengers": 10,
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "tour-3",
+      "title": "Kampot Pepper Plantation & Kep Crab Coast Day Trip",
+      "slug": "kampot-kep-coast-tour",
+      "short_description": "Visit organic Kampot pepper farms, Phnom Chhngok cave temple, salt fields, and feast on fresh crab at the famous Kep Crab Market.",
+      "description": "Escape to Cambodia's southern coastal charm. Taste world-famous GI-certified Kampot pepper, explore limestone karst caves, and enjoy fresh seafood directly overlooking the Gulf of Thailand.",
+      "duration": "Full Day (approx. 8 hours)",
+      "starting_price": 60,
+      "currency": "USD",
+      "pickup_location": "Hotel in Kampot, Kep, or Phnom Penh",
+      "departure_time": "08:30 AM",
+      "highlights": [
+        "La Plantation organic Kampot pepper tasting tour",
+        "7th-century brick shrine inside Phnom Chhngok Cave",
+        "Traditional Kampot sea salt fields",
+        "Kep Crab Market with spicy fresh green pepper stir fry",
+        "Kep beach promenade & French colonial ruins"
+      ],
+      "itinerary": [
+        {
+          "title": "08:30 AM — Hotel Departure",
+          "description": "Scenic drive past lush rice paddies and limestone karsts."
+        },
+        {
+          "title": "09:30 AM — Phnom Chhngok Cave Temple",
+          "description": "Short walk through natural limestone cave featuring pre-Angkorian shrine."
+        },
+        {
+          "title": "11:00 AM — Organic Pepper Plantation",
+          "description": "Guided farm tour and tasting of black, red, white, and salted pepper."
+        },
+        {
+          "title": "01:00 PM — Kep Crab Market Feast",
+          "description": "Taste fresh blue swimmer crab cooked live with fresh green peppercorns."
+        },
+        {
+          "title": "03:00 PM — Kep Beach & Salt Fields",
+          "description": "Leisurely stroll along the coast and photo stops at salt pans."
+        },
+        {
+          "title": "05:00 PM — Return to Hotel",
+          "description": "Safe return to your resort."
+        }
+      ],
+      "included": [
+        "Private AC transportation",
+        "Bottled water",
+        "English-speaking driver assistance"
+      ],
+      "excluded": [
+        "Crab lunch and refreshments",
+        "Personal farm purchases"
+      ],
+      "important_information": [
+        "Wear comfortable walking shoes for cave exploration."
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1200&auto=format&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1200&auto=format&fit=crop"
+      ],
+      "vehicle_type": "Sedan / SUV / Van",
+      "max_passengers": 10,
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "destinations": [
+    {
+      "id": "dest-1",
+      "name": "Phnom Penh",
+      "slug": "phnom-penh",
+      "short_description": "Cambodia's bustling riverside capital rich with gilded royal palaces, vibrant markets, and deeply poignant history.",
+      "description": "Phnom Penh sits at the junction of the Mekong and Tonle Sap rivers. Famous for the Royal Palace, Silver Pagoda, bustling Sisowath Quay riverside, vibrant cafes, and historical monuments including Tuol Sleng and Choeung Ek.",
+      "things_to_do": [
+        "Royal Palace & Silver Pagoda",
+        "Tuol Sleng S-21 Genocide Museum",
+        "Choeung Ek Killing Fields",
+        "Sunset Mekong River Cruise",
+        "Central Market (Phsar Thmei)"
+      ],
+      "travel_tips": "Airport is ~45 mins from center. Private taxi is easiest to navigate city traffic with luggage.",
+      "featured_image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop"
+      ],
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "dest-2",
+      "name": "Siem Reap (Angkor Wat)",
+      "slug": "siem-reap",
+      "short_description": "The world-famous gateway to Angkor Archaeological Park, floating villages, vibrant night markets, and Khmer hospitality.",
+      "description": "Siem Reap is world-renowned for the magnificent 12th-century Angkor Wat temple complex, mysterious smiling faces of Bayon, jungle-entangled Ta Prohm, and cultural boat excursions across Tonle Sap lake.",
+      "things_to_do": [
+        "Angkor Wat Sunrise",
+        "Bayon & Angkor Thom",
+        "Ta Prohm (Tomb Raider)",
+        "Kompong Phluk Floating Village",
+        "Pub Street & Night Markets"
+      ],
+      "travel_tips": "The new SAI Airport is 45km away (~1 hr drive). Book airport taxi in advance to avoid long waits.",
+      "featured_image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+      ],
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "dest-3",
+      "name": "Kampot & Kep",
+      "slug": "kampot-kep",
+      "short_description": "Riverside French colonial tranquility, mountain breezes, world-famous organic pepper farms, and seaside crab delicacies.",
+      "description": "Nestled between the Elephant Mountains and the ocean, Kampot and Kep offer relaxing riverside sunsets, Bokor National Park adventures, organic pepper plantations, and oceanfront dining.",
+      "things_to_do": [
+        "Kampot Pepper Farm Tours",
+        "Kep Fresh Crab Market",
+        "Bokor Mountain Hill Station",
+        "Phnom Chhngok Cave Temple",
+        "Riverside Sunset Kayaking"
+      ],
+      "travel_tips": "Approx. 3 hours from Phnom Penh. Private overland taxi is the most scenic way to arrive.",
+      "featured_image": "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1200&auto=format&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1200&auto=format&fit=crop"
+      ],
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "dest-4",
+      "name": "Sihanoukville & Koh Rong",
+      "slug": "sihanoukville",
+      "short_description": "Coastal hub and gateway to pristine white sand tropical islands of Koh Rong and Koh Rong Sanloem via modern expressway.",
+      "description": "Connected directly to Phnom Penh in under 3 hours via the new expressway, Sihanoukville is the main launch point for ferry transfers to turquoise island paradises.",
+      "things_to_do": [
+        "Speed Ferry to Koh Rong",
+        "Otres Beach Sunset",
+        "Island Hopping & Snorkeling",
+        "Expressway Direct Transfer"
+      ],
+      "travel_tips": "Take private taxi straight to the ferry pier for hassle-free island connection.",
+      "featured_image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
+      ],
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "bookings": [
+    {
+      "customer_name": "MILANGALI YAHAYA KIMU",
+      "email": "digitnetx@gmail.com",
+      "phone": "+2250652810564",
+      "whatsapp": "+2250652810564",
+      "service_name": "Phnom Penh Full-Day City Highlights Tour",
+      "tour_id": "tour-1",
+      "tour_title": "Phnom Penh Full-Day City Highlights Tour",
+      "pickup_location": "Any hotel in Phnom Penh",
+      "destination": "Angkor Wat / Siem Reap",
+      "travel_date": "2026-09-04",
+      "pickup_time": "09:00",
+      "passengers": 2,
+      "luggage": 2,
+      "flight_number": "",
+      "hotel_name": "",
+      "special_requests": "",
+      "id": "bk-1788417610166",
+      "booking_reference": "CCD-2026-108024",
+      "status": "pending",
+      "created_at": "2026-09-03T06:40:10.166Z",
+      "updated_at": "2026-09-03T06:40:10.166Z"
+    },
+    {
+      "id": "bk-1001",
+      "booking_reference": "CCD-2026-000101",
+      "customer_name": "Alexander Wright",
+      "email": "alex.wright@example.com",
+      "phone": "+44 7911 123456",
+      "whatsapp": "+44 7911 123456",
+      "service_id": "srv-1",
+      "service_name": "Airport Transfer",
+      "pickup_location": "Phnom Penh Airport (PNH)",
+      "destination": "Rosewood Phnom Penh, Vattanac Capital",
+      "travel_date": "2026-08-30",
+      "pickup_time": "14:30",
+      "passengers": 2,
+      "luggage": 2,
+      "vehicle_type": "Sedan",
+      "flight_number": "SQ158",
+      "hotel_name": "Rosewood Phnom Penh",
+      "special_requests": "Please prepare cold water, arriving on afternoon Singapore Airlines flight.",
+      "estimated_price": 15,
+      "currency": "USD",
+      "status": "confirmed",
+      "assigned_driver": "Driver Team",
+      "assigned_vehicle": "Toyota Camry (Sedan)",
+      "admin_notes": "Confirmed via WhatsApp. Name sign printed.",
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "bk-1002",
+      "booking_reference": "CCD-2026-000102",
+      "customer_name": "Sophie Dubois",
+      "email": "sophie.dubois@example.fr",
+      "phone": "+33 6 12 34 56 78",
+      "whatsapp": "+33 6 12 34 56 78",
+      "service_id": "srv-3",
+      "service_name": "Overland Transfer",
+      "route_id": "rt-3",
+      "pickup_location": "Pavilion Hotel, Phnom Penh",
+      "destination": "FCC Angkor by Avani, Siem Reap",
+      "travel_date": "2026-09-02",
+      "pickup_time": "08:00",
+      "passengers": 3,
+      "luggage": 3,
+      "vehicle_type": "SUV",
+      "special_requests": "Would like a 20-min photo stop at Kampong Kdei ancient bridge.",
+      "estimated_price": 95,
+      "currency": "USD",
+      "status": "pending",
+      "assigned_driver": "Driver Team",
+      "assigned_vehicle": "Lexus RX300 (SUV)",
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "customer_name": "David & Sarah Mitchell",
+      "country": "United Kingdom 🇬🇧",
+      "rating": 5,
+      "review": "Cambodia Taxi Cab (cambodiataxicab.com) was exceptional for our trip across Cambodia! The driver picked us up directly at Phnom Penh airport with a clear name sign, drove us down to Kampot, and later up to Siem Reap. The car was spotless, the AC was cold, and we got great local suggestions along the road.",
+      "trip_type": "Airport Transfer & Overland Trip",
+      "source": "google",
+      "google_review_url": "https://maps.google.com",
+      "is_featured": true,
+      "is_published": true,
+      "status": "approved",
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "rev-2",
+      "customer_name": "Dr. Michael Chen",
+      "country": "Singapore 🇸🇬",
+      "rating": 5,
+      "review": "I regularly travel to Phnom Penh for business and always book this team for all my meetings and airport transfers. Extremely punctual, communicative on WhatsApp, and drives very safely. Highly recommended to all international travelers.",
+      "trip_type": "Business City Taxi & Airport",
+      "source": "google",
+      "google_review_url": "https://maps.google.com",
+      "is_featured": true,
+      "is_published": true,
+      "status": "approved",
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "rev-3",
+      "customer_name": "Elena Rostova & Friends",
+      "country": "Germany 🇩🇪",
+      "rating": 5,
+      "review": "We booked the full-day Angkor Wat sunrise tour and Phnom Penh city tour. Our driver was so polite, spoke fluent English, and had cold water bottles waiting for us after every single temple visit. 10/10 experience!",
+      "trip_type": "Private Temple Tour",
+      "source": "google",
+      "google_review_url": "https://maps.google.com",
+      "is_featured": true,
+      "is_published": true,
+      "status": "approved",
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "rev-4",
+      "customer_name": "James & Emily Wilson",
+      "country": "Australia 🇦🇺",
+      "rating": 5,
+      "review": "Best taxi service in Cambodia. No haggling, fixed price as agreed, and very smooth ride on the expressway to Sihanoukville. The team even helped coordinate our island ferry tickets. Thank you!",
+      "trip_type": "Expressway Intercity Transfer",
+      "source": "google",
+      "google_review_url": "https://maps.google.com",
+      "is_featured": true,
+      "is_published": true,
+      "status": "approved",
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1",
+      "name": "Mark Henderson",
+      "email": "mark.h@example.com",
+      "phone": "+1 415 555 2671",
+      "subject": "Inquiry for 3-Day Private Tour in Siem Reap",
+      "message": "Hello, my wife and I will be in Siem Reap for 3 days in October. We would like to book private driver service for sunrise at Angkor Wat, Banteay Srei, and a Tonle Sap lake tour. Could you share your availability and package rate?",
+      "status": "unread",
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-1",
+      "question": "How do airport pickups work? Where will the driver meet me?",
+      "answer": "For all airport arrivals (Phnom Penh PNH or Siem Reap SAI), our driver tracks your flight number in real time. After you collect your luggage and exit the customs arrival gate, your assigned driver will be waiting inside the arrival hall holding a clear sign with your name. You never have to worry about flight delays.",
+      "category": "airport",
+      "sort_order": 1,
+      "is_published": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "faq-2",
+      "question": "Are your prices fixed, or will there be extra fees for highway tolls or parking?",
+      "answer": "All quoted prices are 100% fixed and transparent. They include the private air-conditioned vehicle, fuel, driver fee, expressway tolls, airport parking fees, and cold bottled water. There are never surprise meter charges or hidden fees.",
+      "category": "booking",
+      "sort_order": 2,
+      "is_published": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "faq-3",
+      "question": "How and when do I pay for my ride?",
+      "answer": "Payment is made directly to your driver in cash (USD or Cambodian Riel) upon safely arriving at your destination. No advance credit card deposit is required for standard airport and city transfers.",
+      "category": "payment",
+      "sort_order": 3,
+      "is_published": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "faq-4",
+      "question": "Can we stop for coffee, restrooms, or photos during an overland trip?",
+      "answer": "Yes, absolutely! Since this is a 100% private transfer, you have complete control over stops. Your driver will gladly stop at clean roadside service centers, coffee shops, or scenic spots whenever you wish.",
+      "category": "general",
+      "sort_order": 4,
+      "is_published": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "faq-5",
+      "question": "Do your drivers speak English?",
+      "answer": "Yes! All our drivers speak communicative, professional English. Communicating trip details, itinerary preferences, meeting points, and travel recommendations is effortless.",
+      "category": "general",
+      "sort_order": 5,
+      "is_published": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "faq-6",
+      "question": "What vehicles are available for larger families or groups with heavy luggage?",
+      "answer": "We offer Comfort Sedans (1–3 pax), Spacious SUVs (1–4 pax), and Executive Minivans (Toyota Alphard / HiAce for up to 10 pax with extra large luggage compartments). All vehicles feature high-output air conditioning.",
+      "category": "tours",
+      "sort_order": 6,
+      "is_published": true,
+      "created_at": "2026-09-02T17:30:46.576Z",
+      "updated_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "veh-1",
+      "name": "Sedan (Comfort)",
+      "category": "sedan",
+      "models": "Toyota Camry / Prius Hybrid",
+      "capacity_passengers": 3,
+      "capacity_luggage": 3,
+      "description": "Perfect for solo travelers and couples with luggage. Modern, quiet, air-conditioned sedan for city travel and highway transfers.",
+      "price_from": 15,
+      "currency": "USD",
+      "features": [
+        "1–3 Passengers comfortably",
+        "2–3 Medium suitcases",
+        "Ice-cold Dual Zone Air Conditioning",
+        "Complimentary Bottled Water",
+        "USB Mobile Phone Charging",
+        "Clean & sanitized interior"
+      ],
+      "image_url": "/background.webp",
+      "gallery": [
+        "/background.webp",
+        "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1000&auto=format&fit=crop"
+      ],
+      "has_air_con": true,
+      "is_popular": true,
+      "is_active": true,
+      "sort_order": 1
+    },
+    {
+      "id": "veh-2",
+      "name": "SUV / Crossover (Spacious)",
+      "category": "suv",
+      "models": "Lexus RX300 / Toyota Highlander",
+      "capacity_passengers": 4,
+      "capacity_luggage": 4,
+      "description": "Elevated seating, higher ground clearance, plush leather seats, and superior suspension for smooth interprovincial travel and temple touring.",
+      "price_from": 25,
+      "currency": "USD",
+      "features": [
+        "1–4 Passengers with spacious legroom",
+        "3–4 Large suitcases",
+        "High ground clearance for all road conditions",
+        "Plush leather upholstery & tinted privacy windows",
+        "Cold Water & Fresh Refreshment Towels",
+        "Dual high-power Air Conditioning"
+      ],
+      "image_url": "/bg1.jpg",
+      "gallery": [
+        "/bg1.jpg",
+        "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1000&auto=format&fit=crop"
+      ],
+      "has_air_con": true,
+      "is_popular": true,
+      "is_active": true,
+      "sort_order": 2
+    },
+    {
+      "id": "veh-3",
+      "name": "Executive Minivan (Group)",
+      "category": "van",
+      "models": "Hyundai H1 Starex / Toyota Alphard",
+      "capacity_passengers": 10,
+      "capacity_luggage": 8,
+      "description": "Spacious high-roof executive van designed for families, large travel groups, airport luggage, and long-distance sightseeing across Cambodia.",
+      "price_from": 40,
+      "currency": "USD",
+      "features": [
+        "5–10 Passengers comfortably",
+        "6–8 Large suitcases + backpacks",
+        "Individual reclining seats",
+        "Rear independent AC vents for every row",
+        "Complimentary Cold Water & Onboard Wi-Fi (on request)",
+        "Extra large luggage bay"
+      ],
+      "image_url": "/back4.webp",
+      "gallery": [
+        "/back4.webp",
+        "/back5.jpg"
+      ],
+      "has_air_con": true,
+      "is_popular": false,
+      "is_active": true,
+      "sort_order": 3
+    }
+  ],
+  "routes": [
+    {
+      "id": "rt-1",
+      "slug": "phnom-penh-airport-transfer",
+      "origin": "Phnom Penh Int Airport (PNH)",
+      "destination": "Phnom Penh City / Hotel (BKK1, Riverside, Doun Penh)",
+      "route_name": "Phnom Penh Airport ↔ City Center",
+      "estimated_duration": "35 - 50 mins",
+      "distance_km": 14,
+      "sedan_price": 15,
+      "suv_price": 25,
+      "van_price": 40,
+      "currency": "USD",
+      "is_popular": true,
+      "is_airport": true,
+      "airport_code": "PNH",
+      "description": "Direct door-to-door private airport transfer between Phnom Penh International Airport and any hotel in Phnom Penh with personalized name-sign pickup.",
+      "highlights": [
+        "Flight tracking included",
+        "Meet & greet inside terminal",
+        "Luggage assistance",
+        "Fixed transparent price"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=800&auto=format&fit=crop",
+      "is_published": true,
+      "sort_order": 1
+    },
+    {
+      "id": "rt-2",
+      "slug": "siem-reap-airport-transfer",
+      "origin": "Siem Reap–Angkor Int Airport (SAI)",
+      "destination": "Siem Reap City Center / Hotel / Pub Street",
+      "route_name": "Siem Reap Airport (SAI) ↔ Siem Reap City",
+      "estimated_duration": "50 - 65 mins",
+      "distance_km": 45,
+      "sedan_price": 30,
+      "suv_price": 40,
+      "van_price": 60,
+      "currency": "USD",
+      "is_popular": true,
+      "is_airport": true,
+      "airport_code": "SAI",
+      "description": "Comfortable private transfer from the new Siem Reap–Angkor International Airport (SAI) located 45km outside city center straight to your resort or hotel.",
+      "highlights": [
+        "Direct highway transfer",
+        "Flight monitoring",
+        "No waiting in queue",
+        "Air-conditioned comfort"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+      "is_published": true,
+      "sort_order": 2
+    },
+    {
+      "id": "rt-3",
+      "slug": "phnom-penh-to-siem-reap-taxi",
+      "origin": "Phnom Penh",
+      "destination": "Siem Reap (Angkor Wat)",
+      "route_name": "Phnom Penh ↔ Siem Reap",
+      "estimated_duration": "5 - 6 hours",
+      "distance_km": 315,
+      "sedan_price": 75,
+      "suv_price": 95,
+      "van_price": 140,
+      "currency": "USD",
+      "is_popular": true,
+      "is_airport": false,
+      "description": "The most popular overland private route in Cambodia. Travel between the capital and the temple city with flexible stops at Skun (Spider Village) and Kampong Kdei ancient bridge.",
+      "highlights": [
+        "Scenic countryside views",
+        "Stop for local snacks & restrooms",
+        "Door-to-door hotel pickup",
+        "No crowded buses"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop",
+      "is_published": true,
+      "sort_order": 3
+    },
+    {
+      "id": "rt-4",
+      "slug": "phnom-penh-to-sihanoukville-taxi",
+      "origin": "Phnom Penh",
+      "destination": "Sihanoukville / Ferry Pier to Koh Rong",
+      "route_name": "Phnom Penh ↔ Sihanoukville (Expressway)",
+      "estimated_duration": "2.5 - 3 hours",
+      "distance_km": 190,
+      "sedan_price": 65,
+      "suv_price": 85,
+      "van_price": 120,
+      "currency": "USD",
+      "is_popular": true,
+      "is_airport": false,
+      "description": "Fast private transfer via the modern Phnom Penh–Sihanoukville Expressway (E4). Direct connection to Sihanoukville city hotels or speed ferry piers for Koh Rong and Koh Rong Sanloem.",
+      "highlights": [
+        "High-speed modern expressway",
+        "Toll fees included in fixed quote",
+        "Direct ferry drop-off",
+        "Smooth, safe driving"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+      "is_published": true,
+      "sort_order": 4
+    },
+    {
+      "id": "rt-5",
+      "slug": "phnom-penh-to-kampot-kep-taxi",
+      "origin": "Phnom Penh",
+      "destination": "Kampot / Kep Crab Market",
+      "route_name": "Phnom Penh ↔ Kampot & Kep",
+      "estimated_duration": "3 - 3.5 hours",
+      "distance_km": 150,
+      "sedan_price": 55,
+      "suv_price": 70,
+      "van_price": 100,
+      "currency": "USD",
+      "is_popular": true,
+      "is_airport": false,
+      "description": "Scenic drive heading south from Phnom Penh to the French colonial riverside town of Kampot and the famous coastal crab market in Kep.",
+      "highlights": [
+        "Bokor Mountain mountain view",
+        "Stop at pepper plantations",
+        "Comfortable AC ride",
+        "Flexible hotel drop-off"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=800&auto=format&fit=crop",
+      "is_published": true,
+      "sort_order": 5
+    },
+    {
+      "id": "rt-6",
+      "slug": "siem-reap-to-battambang-taxi",
+      "origin": "Siem Reap",
+      "destination": "Battambang (Bamboo Train & Bat Caves)",
+      "route_name": "Siem Reap ↔ Battambang",
+      "estimated_duration": "2.5 - 3 hours",
+      "distance_km": 165,
+      "sedan_price": 45,
+      "suv_price": 60,
+      "van_price": 85,
+      "currency": "USD",
+      "is_popular": false,
+      "is_airport": false,
+      "description": "Travel smoothly between the temples of Angkor and Cambodia's second-largest city, famous for the Bamboo Train, colonial architecture, and evening bat cave exodus at Phnom Sampeau.",
+      "highlights": [
+        "Door-to-door transfer",
+        "Flexible sunset timing",
+        "Rural scenery along Highway 5",
+        "Spacious AC ride"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=800&auto=format&fit=crop",
+      "is_published": true,
+      "sort_order": 6
+    },
+    {
+      "id": "rt-7",
+      "slug": "sihanoukville-airport-transfer",
+      "origin": "Sihanoukville Int Airport (KOS)",
+      "destination": "Sihanoukville City / Otres Beach / Ferry Pier",
+      "route_name": "Sihanoukville Airport ↔ City & Pier",
+      "estimated_duration": "30 - 45 mins",
+      "distance_km": 22,
+      "sedan_price": 20,
+      "suv_price": 30,
+      "van_price": 50,
+      "currency": "USD",
+      "is_popular": false,
+      "is_airport": true,
+      "airport_code": "KOS",
+      "description": "Prompt airport pickup from Sihanoukville International Airport directly to the city center, Otres beach, or the speed ferry pier to Koh Rong.",
+      "highlights": [
+        "Flight tracking",
+        "Name card greeting",
+        "Direct to island boat",
+        "Fixed price"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+      "is_published": true,
+      "sort_order": 7
+    }
+  ],
+  "airports": [
+    {
+      "id": "apt-1",
+      "code": "PNH",
+      "name": "Phnom Penh International Airport",
+      "city": "Phnom Penh",
+      "province": "Phnom Penh",
+      "description": "Cambodia's main capital airport situated approximately 10km from the riverside and city center.",
+      "image_url": "/bg1.jpg",
+      "pickup_instructions": "Your driver will wait outside the Arrival Exit Gate holding a sign with your name clearly printed. Flight numbers are monitored in real time for early arrivals or delays.",
+      "is_active": true
+    },
+    {
+      "id": "apt-2",
+      "code": "SAI",
+      "name": "Siem Reap–Angkor International Airport",
+      "city": "Siem Reap",
+      "province": "Siem Reap",
+      "description": "The new international airport located approximately 45km east of Siem Reap city and the Angkor Archaeological Park.",
+      "image_url": "/back4.webp",
+      "pickup_instructions": "Meet your assigned driver at the primary Arrivals Hall exit right after baggage claim. Your driver will greet you with a name card and assist with your luggage to the private vehicle.",
+      "is_active": true
+    },
+    {
+      "id": "apt-3",
+      "code": "KOS",
+      "name": "Sihanoukville International Airport",
+      "city": "Sihanoukville",
+      "province": "Preah Sihanouk",
+      "description": "Gateway to Cambodia's southern coast, Koh Rong, and Koh Rong Sanloem islands.",
+      "image_url": "/back5.jpg",
+      "pickup_instructions": "Driver greets you directly at the terminal exit gate for immediate transfer to hotels, Otres Beach, or the boat ferry pier.",
+      "is_active": true
+    }
+  ],
+  "mediaItems": [
+    {
+      "id": "med-1",
+      "title": "Cambodia Temples & Countryside",
+      "url": "/background.webp",
+      "category": "hero",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-2",
+      "title": "Angkor Wat Sunrise",
+      "url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+      "category": "tours",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-3",
+      "title": "Phnom Penh Royal Palace",
+      "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop",
+      "category": "destinations",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-4",
+      "title": "Comfort Sedan Taxi",
+      "url": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1000&auto=format&fit=crop",
+      "category": "vehicles",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-5",
+      "title": "Luxury SUV Crossover",
+      "url": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1000&auto=format&fit=crop",
+      "category": "vehicles",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-6",
+      "title": "Executive Group Minivan",
+      "url": "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1000&auto=format&fit=crop",
+      "category": "vehicles",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-7",
+      "title": "Airport Pickup Transfer",
+      "url": "https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=1200&auto=format&fit=crop",
+      "category": "services",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-8",
+      "title": "Kampot Riverside & Pepper Farm",
+      "url": "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=1200&auto=format&fit=crop",
+      "category": "destinations",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    },
+    {
+      "id": "med-9",
+      "title": "Sihanoukville & Koh Rong Beach",
+      "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+      "category": "destinations",
+      "created_at": "2026-09-02T17:30:46.576Z"
+    }
+  ],
+  "_metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-09-03T06:40:10.317Z",
+    "created_at": "2026-09-02T17:30:46.578Z"
+  }
+}

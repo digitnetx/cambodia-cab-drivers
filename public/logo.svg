@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="100%" height="100%">
+  <defs>
+    <!-- Brand Primary Colors -->
+    <!-- Navy: #0C1A38 / #071126, Red: #DC2626 / #E11D48 -->
+    <linearGradient id="brandRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E11D48" />
+      <stop offset="100%" stop-color="#DC2626" />
+    </linearGradient>
+  </defs>
+
+  <!-- RED CRESCENT ARC -->
+  <path d="M 120 250 C 110 145 200 62 330 62 C 390 62 445 88 475 152 C 455 105 400 78 335 78 C 225 78 135 150 142 245 Z" fill="#DC2626" />
+
+  <!-- ANGKOR WAT SILHOUETTE (Deep Navy Blue #0C1A38) -->
+  <g fill="#0C1A38">
+    <!-- Base Platform steps behind car -->
+    <rect x="145" y="210" width="300" height="20" rx="1" />
+    <rect x="165" y="195" width="265" height="15" rx="1" />
+    <rect x="185" y="178" width="225" height="17" rx="1" />
+
+    <!-- Left Spire 1 (Outer Left) -->
+    <path d="M 175 220 L 195 220 L 193 185 L 177 185 Z" />
+    <path d="M 178 185 L 192 185 L 190 160 L 180 160 Z" />
+    <polygon points="185,145 180,160 190,160" />
+
+    <!-- Left Spire 2 (Inner Left) -->
+    <path d="M 215 200 L 250 200 L 247 165 L 218 165 Z" />
+    <path d="M 220 165 L 245 165 L 242 135 L 223 135 Z" />
+    <path d="M 224 135 L 241 135 L 238 110 L 227 110 Z" />
+    <polygon points="232.5,90 227,110 238,110" />
+
+    <!-- Central Grand Spire (Angkor Wat Main Tower) -->
+    <rect x="278" y="150" width="44" height="40" rx="1" />
+    <!-- Center window gap in tower -->
+    <rect x="294" y="158" width="12" height="20" fill="#FFFFFF" rx="1" />
+    <rect x="296" y="160" width="8" height="18" fill="#0C1A38" />
+
+    <path d="M 272 150 L 328 150 L 324 125 L 276 125 Z" />
+    <path d="M 277 125 L 323 125 L 319 98 L 281 98 Z" />
+    <path d="M 283 98 L 317 98 L 313 72 L 287 72 Z" />
+    <path d="M 289 72 L 311 72 L 306 48 L 294 48 Z" />
+    <polygon points="300,28 293,48 307,48" />
+
+    <!-- Right Spire 2 (Inner Right) -->
+    <path d="M 350 200 L 385 200 L 382 165 L 353 165 Z" />
+    <path d="M 355 165 L 380 165 L 377 135 L 358 135 Z" />
+    <path d="M 359 135 L 376 135 L 373 110 L 362 110 Z" />
+    <polygon points="367.5,90 362,110 373,110" />
+
+    <!-- Right Spire 1 (Outer Right) -->
+    <path d="M 405 220 L 425 220 L 423 185 L 407 185 Z" />
+    <path d="M 408 185 L 422 185 L 420 160 L 410 160 Z" />
+    <polygon points="415,145 410,160 420,160" />
+  </g>
+
+  <!-- CAR SILHOUETTE & SPEED LINES -->
+  <g>
+    <!-- Roof Line & Pillars -->
+    <path d="M 215 240 C 230 215 315 180 395 180 C 445 180 475 195 500 218 L 470 218 C 450 200 425 190 385 190 C 320 190 255 220 235 240 Z" fill="#0C1A38" />
+
+    <!-- Windshield Pillar Divider & Side Glass Outline -->
+    <path d="M 360 188 L 330 225 L 472 225 C 452 208 425 196 385 192 Z" fill="#0C1A38" />
+
+    <!-- Sleek Minimalist Side Mirror -->
+    <path d="M 345 210 Q 365 210 375 222 Q 355 225 342 220 Z" fill="#0C1A38" />
+
+    <!-- Car Front Hood & Grille Profile -->
+    <path d="M 110 262 C 125 240 180 230 235 228 C 300 225 345 225 355 235 L 210 240 C 160 242 125 250 110 262 Z" fill="#0C1A38" />
+
+    <!-- Front Headlight Accent (Navy Contour) -->
+    <path d="M 210 242 C 240 242 275 244 290 260 C 260 260 230 255 210 242 Z" fill="#0C1A38" />
+
+    <!-- Lower Bumper Sweep -->
+    <path d="M 108 285 L 230 285 C 205 272 165 270 112 272 Z" fill="#0C1A38" />
+    <path d="M 130 255 L 210 255 L 195 270 L 138 270 Z" fill="#0C1A38" />
+
+    <!-- Wheel Arch & Tire Contours -->
+    <path d="M 290 285 C 295 255 330 248 350 275 C 335 258 310 260 302 285 Z" fill="#0C1A38" />
+
+    <!-- Red Lower Swoosh / Speed Line under car -->
+    <path d="M 170 292 C 280 292 420 262 525 264 C 450 278 320 298 170 292 Z" fill="#DC2626" />
+    
+    <!-- Navy Lower Speed Line under Red Swoosh -->
+    <path d="M 320 297 C 410 292 485 278 525 284 C 475 288 400 302 320 297 Z" fill="#0C1A38" />
+    
+    <!-- Rear Body Speed Extension -->
+    <path d="M 440 228 C 480 230 520 232 550 234 C 520 236 470 234 440 228 Z" fill="#0C1A38" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- TYPOGRAPHY (MATCHING LOGO EXACTLY)        -->
+  <!-- ========================================== -->
+
+  <!-- "CAMBODIA" - Bold Navy Display -->
+  <text x="300" y="365" 
+        fill="#0C1A38" 
+        font-family="-apple-system, BlinkMacSystemFont, 'Montserrat', 'Arial Black', sans-serif" 
+        font-size="52" 
+        font-weight="950" 
+        text-anchor="middle" 
+        letter-spacing="2">CAMBODIA</text>
+
+  <!-- "TAXI CAB" with Modern Red Wing Accents -->
+  <!-- Left Red Speed Wings -->
+  <g fill="#DC2626">
+    <rect x="62" y="386" width="68" height="4.5" rx="2" />
+    <rect x="76" y="395" width="54" height="4.5" rx="2" />
+    <rect x="90" y="404" width="40" height="4.5" rx="2" />
+  </g>
+
+  <!-- Text "TAXI CAB" in Bright Red -->
+  <text x="300" y="406" 
+        fill="#DC2626" 
+        font-family="-apple-system, BlinkMacSystemFont, 'Montserrat', 'Arial Black', sans-serif" 
+        font-size="36" 
+        font-weight="950" 
+        text-anchor="middle" 
+        letter-spacing="10">TAXI CAB</text>
+
+  <!-- Right Red Speed Wings -->
+  <g fill="#DC2626">
+    <rect x="470" y="386" width="68" height="4.5" rx="2" />
+    <rect x="470" y="395" width="54" height="4.5" rx="2" />
+    <rect x="470" y="404" width="40" height="4.5" rx="2" />
+  </g>
+
+  <!-- TAGLINE: "PRIVATE TAXI  |  AIRPORT TRANSFER  |  TOURS" in Navy & Red -->
+  <text x="300" y="432" 
+        fill="#0C1A38" 
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="13" 
+        font-weight="800" 
+        text-anchor="middle" 
+        letter-spacing="2.8">
+    PRIVATE TAXI  <tspan fill="#DC2626" font-weight="900">|</tspan>  AIRPORT TRANSFER  <tspan fill="#DC2626" font-weight="900">|</tspan>  TOURS
+  </text>
+</svg>
