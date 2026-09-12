@@ -3,6 +3,7 @@ import { useApp } from '../../../context/AppContext';
 import { Breadcrumbs } from '../../layout/Breadcrumbs';
 import { getWhatsAppGeneralUrl } from '../../../lib/whatsapp';
 import { CheckCircle2, MessageSquare, ArrowRight, ShieldCheck, Car, Calendar } from 'lucide-react';
+import { featuredImageSrc } from '../../../lib/images';
 
 export const ServiceDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
   const { services, navigate, showToast } = useApp();
@@ -74,7 +75,7 @@ export const ServiceDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
 
           <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-200 shadow-md h-80 bg-slate-100">
             <img
-              src={service.featured_image}
+              src={featuredImageSrc(service)}
               alt={service.name}
               className="w-full h-full object-cover"
             />

@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { Service } from '../../types';
 import { Layers, Plus, Edit, Trash2, X, Star, DollarSign, Check } from 'lucide-react';
 import { ImageUploadField } from './ImageUploadField';
+import { featuredImageSrc } from '../../lib/images';
 
 export const AdminServices: React.FC = () => {
   const { services, saveService, deleteService, siteSettings } = useApp();
@@ -103,7 +104,7 @@ export const AdminServices: React.FC = () => {
           >
             <div className="relative h-48 bg-slate-100 overflow-hidden">
               <img 
-                src={s.featured_image} 
+                src={featuredImageSrc(s)}
                 alt={s.name}
                 className="w-full h-full object-cover"
               />
@@ -169,10 +170,10 @@ export const AdminServices: React.FC = () => {
 
       {/* Edit / Create Modal */}
       {isEditing && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl p-6 shadow-2xl space-y-5 my-8 text-slate-800">
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-start sm:items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain p-4 sm:p-6 shadow-2xl space-y-5 my-auto text-slate-800">
             
-            <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div className="sticky top-0 z-10 -mx-4 sm:-mx-6 -mt-4 sm:-mt-6 px-4 sm:px-6 pt-4 sm:pt-6 pb-4 bg-white flex items-center justify-between gap-3 border-b border-slate-200">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Layers className="w-5 h-5 text-red-600" />
                 {selectedService ? `Edit Service: ${selectedService.name}` : 'Add New Service'}
@@ -221,7 +222,7 @@ export const AdminServices: React.FC = () => {
                   />
                 </div>
 
-                <div className="sm:col-span-2"><ImageUploadField label="Featured Image — URL or upload" value={formData.featured_image} onChange={(featured_image) => setFormData({ ...formData, featured_image })} /></div>
+                <div className="sm:col-span-2"><ImageUploadField label="Featured Image — URL, Storage, or Database" value={formData.featured_image} binaryData={formData.featured_image_data} binaryMime={formData.featured_image_mime} onChange={(featured_image) => setFormData({ ...formData, featured_image })} onDatabaseImageChange={(featured_image_data, featured_image_mime) => setFormData({ ...formData, featured_image_data, featured_image_mime })} /></div>
                 <div>
                   <label className="block text-slate-700 font-semibold mb-1">Currency</label>
                   <input type="text" maxLength={10} value={formData.currency || 'USD'} onChange={(e) => setFormData({ ...formData, currency: e.target.value.toUpperCase() })} className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden" />
@@ -308,17 +309,17 @@ export const AdminServices: React.FC = () => {
                 </label>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+              <div className="sticky bottom-0 -mx-4 sm:-mx-6 px-4 sm:px-6 pb-1 pt-4 bg-white flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition border border-slate-200 cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition border border-slate-200 cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition shadow-md cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition shadow-md cursor-pointer"
                 >
                   Save Service
                 </button>

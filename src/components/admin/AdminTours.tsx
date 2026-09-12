@@ -4,12 +4,17 @@ import { Tour } from '../../types';
 import { Plus, Edit, Trash2, CheckCircle2, Star, Eye, X, Image as ImageIcon } from 'lucide-react';
 import { slugify } from '../../lib/utils';
 import { ImageUploadField } from './ImageUploadField';
+import { api } from '../../lib/api';
+import { featuredImageSrc } from '../../lib/images';
 
 export const AdminTours: React.FC = () => {
   const { tours, saveTour, deleteTour } = useApp();
   const [editingTour, setEditingTour] = useState<Partial<Tour> | null>(null);
+  const [saveError, setSaveError] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleCreateNew = () => {
+    setSaveError('');
     setEditingTour({
       title: '',
       slug: '',
@@ -36,10 +41,23 @@ export const AdminTours: React.FC = () => {
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!editingTour) return;
-    const finalSlug = editingTour.slug || slugify(editingTour.title || 'new-tour');
-    await saveTour({ ...editingTour, slug: finalSlug });
-    setEditingTour(null);
+    if (!editingTour || isSaving) return;
+    setSaveError('');
+    setIsSaving(true);
+    const baseSlug = editingTour.slug || slugify(editingTour.title || 'new-tour');
+    const usedSlugs = new Set(tours.filter(tour => tour.id !== editingTour.id).map(tour => tour.slug));
+    let finalSlug = baseSlug;
+    let suffix = 2;
+    while (usedSlugs.has(finalSlug)) {
+      finalSlug = `${baseSlug}-${suffix++}`;
+    }
+    try {
+      const saved = await saveTour({ ...editingTour, slug: finalSlug });
+      if (saved) setEditingTour(null);
+      else setSaveError(api.getLastWriteError() || 'Supabase could not save this tour.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -70,7 +88,7 @@ export const AdminTours: React.FC = () => {
           <div key={tour.id} className="bg-white border border-slate-200/90 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-xs hover:border-slate-300 transition">
             <div className="space-y-3">
               <div className="relative h-40 rounded-xl overflow-hidden bg-slate-100">
-                <img src={tour.featured_image} alt={tour.title} className="w-full h-full object-cover" />
+                <img src={featuredImageSrc(tour)} alt={tour.title} className="w-full h-full object-cover" />
                 <div className="absolute top-2 right-2 flex gap-1">
                   {tour.is_featured && (
                     <span className="bg-[#C9A227] text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md shadow-xs">
@@ -92,7 +110,7 @@ export const AdminTours: React.FC = () => {
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
               <div className="flex gap-2">
                 <button
-                  onClick={() => setEditingTour(tour)}
+                  onClick={() => { setSaveError(''); setEditingTour(tour); }}
                   className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs flex items-center gap-1 font-bold cursor-pointer"
                 >
                   <Edit className="w-3.5 h-3.5" />
@@ -190,7 +208,7 @@ export const AdminTours: React.FC = () => {
                 <input type="number" min="1" value={editingTour.sort_order ?? 1} onChange={(e) => setEditingTour({ ...editingTour, sort_order: Number(e.target.value) })} className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:outline-none focus:border-red-500 focus:bg-white" />
               </div>
 
-              <div className="sm:col-span-2"><ImageUploadField label="Featured Image — URL or upload" value={editingTour.featured_image} onChange={(featured_image) => setEditingTour({ ...editingTour, featured_image })} /></div>
+              <div className="sm:col-span-2"><ImageUploadField label="Featured Image — URL, Storage, or Database" value={editingTour.featured_image} binaryData={editingTour.featured_image_data} binaryMime={editingTour.featured_image_mime} onChange={(featured_image) => setEditingTour({ ...editingTour, featured_image })} onDatabaseImageChange={(featured_image_data, featured_image_mime) => setEditingTour({ ...editingTour, featured_image_data, featured_image_mime })} /></div>
 
               <div className="sm:col-span-2">
                 <label className="block text-xs font-semibold text-slate-700 mb-1">Highlights (one per line)</label>
@@ -248,19 +266,27 @@ export const AdminTours: React.FC = () => {
               </div>
             </div>
 
+            {saveError && (
+              <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-3 py-2.5 text-xs font-medium text-red-700">
+                Save failed: {saveError}
+              </p>
+            )}
+
             <div className="pt-4 border-t border-slate-100 flex justify-end gap-3">
               <button
                 type="button"
-                onClick={() => setEditingTour(null)}
+                onClick={() => { setSaveError(''); setEditingTour(null); }}
+                disabled={isSaving}
                 className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow-xs cursor-pointer"
+                disabled={isSaving}
+                className="px-6 py-2 bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-bold text-xs rounded-xl shadow-xs cursor-pointer disabled:cursor-not-allowed"
               >
-                Save Tour
+                {isSaving ? 'Saving…' : 'Save Tour'}
               </button>
             </div>
 

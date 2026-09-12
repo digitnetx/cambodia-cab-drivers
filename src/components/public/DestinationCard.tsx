@@ -2,6 +2,7 @@ import React from 'react';
 import { Destination } from '../../types';
 import { useApp } from '../../context/AppContext';
 import { MapPin, ArrowUpRight } from 'lucide-react';
+import { featuredImageSrc } from '../../lib/images';
 
 export const DestinationCard: React.FC<{ destination: Destination }> = ({ destination }) => {
   const { navigate } = useApp();
@@ -12,7 +13,7 @@ export const DestinationCard: React.FC<{ destination: Destination }> = ({ destin
       className="group relative rounded-2xl overflow-hidden cursor-pointer bg-slate-900 border border-slate-200 hover:border-red-500/80 hover:shadow-xl transition-all duration-300 shadow-md h-80 flex flex-col justify-end p-6"
     >
       <img
-        src={destination.featured_image}
+        src={featuredImageSrc(destination)}
         alt={destination.name}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         loading="lazy"

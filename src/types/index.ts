@@ -12,6 +12,8 @@ export interface Service {
   description: string;
   icon: string; // Lucide icon identifier
   featured_image: string;
+  featured_image_data?: string | null;
+  featured_image_mime?: string | null;
   starting_price?: number;
   currency?: string;
   features?: string[];
@@ -103,6 +105,8 @@ export interface Tour {
   excluded: string[];
   important_information: string[];
   featured_image: string;
+  featured_image_data?: string | null;
+  featured_image_mime?: string | null;
   gallery: string[];
   vehicle_type?: string;
   max_passengers?: number;
@@ -123,6 +127,8 @@ export interface Destination {
   things_to_do: string[];
   travel_tips?: string;
   featured_image: string;
+  featured_image_data?: string | null;
+  featured_image_mime?: string | null;
   gallery: string[];
   seo_title?: string;
   seo_description?: string;
@@ -376,4 +382,3 @@ export interface DatabaseSchema {
     created_at: string;
   };
 }
-

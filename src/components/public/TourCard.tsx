@@ -2,6 +2,7 @@ import React from 'react';
 import { Tour } from '../../types';
 import { useApp } from '../../context/AppContext';
 import { Clock, MapPin, ArrowRight } from 'lucide-react';
+import { featuredImageSrc } from '../../lib/images';
 
 export const TourCard: React.FC<{ tour: Tour }> = ({ tour }) => {
   const { navigate } = useApp();
@@ -12,7 +13,7 @@ export const TourCard: React.FC<{ tour: Tour }> = ({ tour }) => {
       {/* Image container */}
       <div className="relative h-52 overflow-hidden bg-slate-100">
         <img
-          src={tour.featured_image}
+          src={featuredImageSrc(tour)}
           alt={tour.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"

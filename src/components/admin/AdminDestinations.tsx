@@ -4,6 +4,7 @@ import { Destination } from '../../types';
 import { Plus, Edit, Trash2, MapPin, X } from 'lucide-react';
 import { slugify } from '../../lib/utils';
 import { ImageUploadField } from './ImageUploadField';
+import { featuredImageSrc } from '../../lib/images';
 
 export const AdminDestinations: React.FC = () => {
   const { destinations, saveDestination, deleteDestination } = useApp();
@@ -59,7 +60,7 @@ export const AdminDestinations: React.FC = () => {
           <div key={dest.id} className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-xs hover:border-red-300 transition">
             <div className="space-y-3">
               <div className="relative h-36 rounded-xl overflow-hidden bg-slate-100">
-                <img src={dest.featured_image} alt={dest.name} className="w-full h-full object-cover" />
+                <img src={featuredImageSrc(dest)} alt={dest.name} className="w-full h-full object-cover" />
                 <div className="absolute top-2 right-2 flex gap-1">
                   {dest.is_featured && (
                     <span className="bg-red-600 text-white text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md shadow-md">
@@ -102,17 +103,17 @@ export const AdminDestinations: React.FC = () => {
       </div>
 
       {editingDest && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <form onSubmit={handleSave} className="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl relative text-slate-800">
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-start sm:items-center justify-center overflow-y-auto p-3 sm:p-4">
+          <form onSubmit={handleSave} className="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4 shadow-2xl relative my-auto text-slate-800">
             <button
               type="button"
               onClick={() => setEditingDest(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 cursor-pointer"
+              className="absolute z-20 top-4 right-4 text-slate-400 hover:text-slate-700 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h2 className="text-xl font-bold text-slate-900 font-sans border-b border-slate-200 pb-3 flex items-center gap-2">
+            <h2 className="sticky top-0 z-10 -mx-4 sm:-mx-6 -mt-4 sm:-mt-6 px-4 sm:px-6 pt-4 sm:pt-6 pb-3 bg-white text-xl font-bold text-slate-900 font-sans border-b border-slate-200 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-red-600" />
               {editingDest.id ? 'Edit Destination' : 'Add Destination'}
             </h2>
@@ -139,7 +140,7 @@ export const AdminDestinations: React.FC = () => {
                 />
               </div>
 
-              <div className="sm:col-span-2"><ImageUploadField label="Featured Image — URL or upload" value={editingDest.featured_image} onChange={(featured_image) => setEditingDest({ ...editingDest, featured_image })} /></div>
+              <div className="sm:col-span-2"><ImageUploadField label="Featured Image — URL, Storage, or Database" value={editingDest.featured_image} binaryData={editingDest.featured_image_data} binaryMime={editingDest.featured_image_mime} onChange={(featured_image) => setEditingDest({ ...editingDest, featured_image })} onDatabaseImageChange={(featured_image_data, featured_image_mime) => setEditingDest({ ...editingDest, featured_image_data, featured_image_mime })} /></div>
 
               <div className="sm:col-span-2">
                 <label className="block text-xs font-semibold text-slate-700 mb-1">Short Description</label>
@@ -192,17 +193,17 @@ export const AdminDestinations: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-200 flex justify-end gap-3">
+            <div className="sticky bottom-0 -mx-4 sm:-mx-6 px-4 sm:px-6 pb-1 pt-4 bg-white border-t border-slate-200 flex flex-col-reverse sm:flex-row justify-end gap-3">
               <button
                 type="button"
                 onClick={() => setEditingDest(null)}
-                className="px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-xs rounded-xl border border-slate-200 transition cursor-pointer"
+                className="w-full sm:w-auto px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-xs rounded-xl border border-slate-200 transition cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow-md shadow-red-600/20 transition cursor-pointer"
+                className="w-full sm:w-auto px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow-md shadow-red-600/20 transition cursor-pointer"
               >
                 Save Destination
               </button>

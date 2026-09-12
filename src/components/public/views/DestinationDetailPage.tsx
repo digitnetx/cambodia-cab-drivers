@@ -5,6 +5,7 @@ import { TourCard } from '../TourCard';
 import { DestinationCard } from '../DestinationCard';
 import { getWhatsAppGeneralUrl } from '../../../lib/whatsapp';
 import { MapPin, CheckCircle2, MessageSquare, ArrowRight, Compass, Car } from 'lucide-react';
+import { featuredImageSrc } from '../../../lib/images';
 
 export const DestinationDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
   const { destinations = [], tours = [], navigate } = useApp();
@@ -86,7 +87,7 @@ export const DestinationDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
 
           <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-200 shadow-md h-80 bg-slate-100">
             <img
-              src={destination.featured_image}
+              src={featuredImageSrc(destination)}
               alt={destination.name}
               className="w-full h-full object-cover"
             />

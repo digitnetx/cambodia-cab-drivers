@@ -81,7 +81,7 @@ interface AppContextType {
   deleteMessage?: (id: string) => Promise<void>;
 
   // CMS Actions
-  saveTour: (tour: Partial<Tour>) => Promise<void>;
+  saveTour: (tour: Partial<Tour>) => Promise<boolean>;
   deleteTour: (id: string) => Promise<void>;
 
   saveDestination: (destination: Partial<Destination>) => Promise<void>;
@@ -561,9 +561,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Tours CMS (Database Persisted)
   const saveTour = async (tour: Partial<Tour>) => {
     if (tour.id) {
+      const saved = await api.updateItem('tours', tour.id, tour);
+      if (!saved) {
+        showToast(`Tour was not saved: ${api.getLastWriteError() || 'Confirm this account has Supabase admin access, then try again.'}`, 'error');
+        return false;
+      }
       setTours(prev => prev.map(t => t.id === tour.id ? { ...t, ...tour, updated_at: new Date().toISOString() } as Tour : t));
-      await api.updateItem('tours', tour.id, tour);
       showToast('Tour updated in database');
+      return true;
     } else {
       const newTour: Tour = {
         id: crypto.randomUUID(),
@@ -590,9 +595,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       };
-      setTours(prev => [newTour, ...prev]);
-      await api.insertItem('tours', newTour);
+      const savedTour = await api.insertItem('tours', newTour);
+      if (!savedTour) {
+        showToast(`Tour was not saved: ${api.getLastWriteError() || 'Confirm this account has Supabase admin access, then try again.'}`, 'error');
+        return false;
+      }
+      setTours(prev => [{ ...newTour, ...savedTour } as Tour, ...prev]);
       showToast('Tour saved to database');
+      return true;
     }
   };
 
@@ -605,8 +615,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Destinations CMS (Database Persisted)
   const saveDestination = async (destination: Partial<Destination>) => {
     if (destination.id) {
+      const saved = await api.updateItem('destinations', destination.id, destination);
+      if (!saved) {
+        showToast('Destination was not saved. Confirm this account has Supabase admin access, then try again.', 'error');
+        return;
+      }
       setDestinations(prev => prev.map(d => d.id === destination.id ? { ...d, ...destination, updated_at: new Date().toISOString() } as Destination : d));
-      await api.updateItem('destinations', destination.id, destination);
       showToast('Destination updated in database');
     } else {
       const newDest: Destination = {
@@ -624,8 +638,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       };
-      setDestinations(prev => [newDest, ...prev]);
-      await api.insertItem('destinations', newDest);
+      const savedDestination = await api.insertItem('destinations', newDest);
+      if (!savedDestination) {
+        showToast('Destination was not saved. Confirm this account has Supabase admin access, then try again.', 'error');
+        return;
+      }
+      setDestinations(prev => [{ ...newDest, ...savedDestination } as Destination, ...prev]);
       showToast('Destination saved to database');
     }
   };
@@ -639,8 +657,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Services CMS (Database Persisted)
   const saveService = async (service: Partial<Service>) => {
     if (service.id) {
+      const saved = await api.updateItem('services', service.id, service);
+      if (!saved) {
+        showToast('Service was not saved. Confirm this account has Supabase admin access, then try again.', 'error');
+        return;
+      }
       setServices(prev => prev.map(s => s.id === service.id ? { ...s, ...service, updated_at: new Date().toISOString() } as Service : s));
-      await api.updateItem('services', service.id, service);
       showToast('Service updated in database');
     } else {
       const newSrv: Service = {
@@ -662,8 +684,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       };
-      setServices(prev => [newSrv, ...prev]);
-      await api.insertItem('services', newSrv);
+      const savedService = await api.insertItem('services', newSrv);
+      if (!savedService) {
+        showToast('Service was not saved. Confirm this account has Supabase admin access, then try again.', 'error');
+        return;
+      }
+      setServices(prev => [{ ...newSrv, ...savedService } as Service, ...prev]);
       showToast('Service saved to database');
     }
   };

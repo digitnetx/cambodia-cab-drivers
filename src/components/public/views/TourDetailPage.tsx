@@ -5,6 +5,7 @@ import { TourCard } from '../TourCard';
 import { FAQAccordion } from '../FAQAccordion';
 import { getWhatsAppBookingUrl } from '../../../lib/whatsapp';
 import { Clock, MapPin, CheckCircle2, XCircle, Info, Calendar, ArrowRight, MessageSquare, Compass, ShieldCheck } from 'lucide-react';
+import { featuredImageSrc } from '../../../lib/images';
 
 export const TourDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
   const { tours = [], faqs = [], navigate, showToast } = useApp();
@@ -26,8 +27,8 @@ export const TourDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
     );
   }
 
-  const galleryImages = [tour.featured_image, ...(tour.gallery || [])].filter(Boolean);
-  const currentDisplayImage = activeImage || tour.featured_image;
+  const galleryImages = [featuredImageSrc(tour), ...(tour.gallery || [])].filter(Boolean);
+  const currentDisplayImage = activeImage || featuredImageSrc(tour);
   const relatedTours = (tours || []).filter(t => t && t.id !== tour.id && t.is_active).slice(0, 3);
   const tourFaqs = (faqs || []).filter(f => f && (f.category === 'tours' || f.category === 'general')).slice(0, 4);
 
