@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Vehicle } from '../../types';
 import { Car, Plus, Edit, Trash2, X, Users, Briefcase, Wind, Check } from 'lucide-react';
+import { ImageUploadField } from './ImageUploadField';
+import { imageSrc } from '../../lib/images';
 
 export const AdminVehicles: React.FC = () => {
   const { vehicles, saveVehicle, deleteVehicle, siteSettings } = useApp();
@@ -100,7 +102,7 @@ export const AdminVehicles: React.FC = () => {
           >
             <div className="relative h-48 bg-slate-100 overflow-hidden">
               <img 
-                src={v.image_url} 
+                src={imageSrc(v)}
                 alt={v.name}
                 className="w-full h-full object-cover"
               />
@@ -182,10 +184,10 @@ export const AdminVehicles: React.FC = () => {
 
       {/* Edit / Create Modal */}
       {isEditing && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl p-6 shadow-2xl space-y-5 my-8 text-slate-800">
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-start sm:items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain p-4 sm:p-6 shadow-2xl space-y-5 my-auto text-slate-800">
             
-            <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div className="sticky top-0 z-10 -mx-4 sm:-mx-6 -mt-4 sm:-mt-6 px-4 sm:px-6 pt-4 sm:pt-6 pb-4 bg-white flex items-center justify-between gap-3 border-b border-slate-200">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Car className="w-5 h-5 text-red-600" />
                 {selectedVehicle ? `Edit Vehicle: ${selectedVehicle.name}` : 'Add New Vehicle'}
@@ -283,16 +285,7 @@ export const AdminVehicles: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-slate-700 font-semibold mb-1">Photo / Image URL</label>
-                <input
-                  type="url"
-                  placeholder="https://..."
-                  value={formData.image_url || ''}
-                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden font-mono"
-                />
-              </div>
+              <ImageUploadField label="Vehicle Image — URL, Storage, or Database" value={formData.image_url} binaryData={formData.image_data} binaryMime={formData.image_mime} onChange={(image_url) => setFormData({ ...formData, image_url })} onDatabaseImageChange={(image_data, image_mime) => setFormData({ ...formData, image_data, image_mime })} />
 
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">Description</label>
@@ -370,7 +363,7 @@ export const AdminVehicles: React.FC = () => {
                 </label>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+              <div className="sticky bottom-0 -mx-4 sm:-mx-6 px-4 sm:px-6 pb-1 pt-4 bg-white flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { Phone, Mail, MapPin, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageSquare, ArrowUpRight, Globe } from 'lucide-react';
 import { getWhatsAppGeneralUrl, PHONE_NUMBER } from '../../lib/whatsapp';
 import { Logo } from '../common/Logo';
 
@@ -11,6 +11,13 @@ export const Footer: React.FC = () => {
     navigate(href);
     window.scrollTo(0, 0);
   };
+
+  const accountLinks = [
+    { label: 'Google Business', url: siteSettings.google_business_url },
+    { label: 'Facebook', url: siteSettings.facebook_url },
+    ...(siteSettings.facebook_urls || []).map((url, index) => ({ label: `Facebook ${index + 2}`, url })),
+    { label: 'TripAdvisor', url: siteSettings.tripadvisor_url },
+  ].filter((link): link is { label: string; url: string } => Boolean(link.url));
 
   return (
     <footer className="bg-[#F5F4F0] text-slate-700 border-t border-slate-200 pt-16 pb-12 font-sans">
@@ -157,6 +164,18 @@ export const Footer: React.FC = () => {
                   {siteSettings.email}
                 </a>
               </li>
+              {accountLinks.length > 0 && (
+                <li className="flex items-start gap-2.5">
+                  <Globe className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs font-medium">
+                    {accountLinks.map((link) => (
+                      <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition underline-offset-2 hover:underline">
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </li>
+              )}
             </ul>
           </div>
 

@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { Vehicle } from '../../types';
 import { Users, Luggage, Wind, CheckCircle2, ArrowRight, MessageSquare, Car, Sparkles } from 'lucide-react';
 import { getWhatsAppVehicleUrl } from '../../lib/whatsapp';
+import { imageSrc } from '../../lib/images';
 
 export const VehicleSelectionSection: React.FC = () => {
   const { vehicles, navigate, t, language } = useApp();
@@ -46,7 +47,7 @@ export const VehicleSelectionSection: React.FC = () => {
                 {/* Vehicle Image */}
                 <div className="relative h-56 bg-slate-100 overflow-hidden">
                   <img
-                    src={vehicle.image_url}
+                    src={imageSrc(vehicle)}
                     alt={`${vehicle.name} Cambodia taxi`}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />

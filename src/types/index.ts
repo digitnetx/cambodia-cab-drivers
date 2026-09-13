@@ -41,6 +41,8 @@ export interface Vehicle {
   currency?: string;
   features: string[];
   image_url: string;
+  image_data?: string | null;
+  image_mime?: string | null;
   gallery?: string[];
   has_air_con: boolean;
   is_popular?: boolean;
@@ -68,6 +70,8 @@ export interface RoutePricing {
   description: string;
   highlights: string[];
   image_url?: string;
+  image_data?: string | null;
+  image_mime?: string | null;
   seo_title?: string;
   seo_description?: string;
   is_published: boolean;
@@ -84,6 +88,8 @@ export interface Airport {
   province: string;
   description: string;
   image_url: string;
+  image_data?: string | null;
+  image_mime?: string | null;
   pickup_instructions: string;
   is_active: boolean;
 }
@@ -323,12 +329,14 @@ export interface SiteSettings {
   logo_url: string;
   favicon_url?: string;
   facebook_url: string;
+  facebook_urls?: string[];
   instagram_url: string;
   tiktok_url?: string;
   telegram_url: string;
   youtube_url?: string;
   google_maps_url: string;
   google_business_url?: string;
+  tripadvisor_url?: string;
   primary_color: string;
   accent_color: string;
   footer_description: string;

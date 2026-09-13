@@ -19,13 +19,18 @@ export const INITIAL_SITE_SETTINGS: SiteSettings = {
   emergency_contact: '+855 16 509 371',
   logo_url: '/logo.svg',
   favicon_url: '/logo-icon.svg',
-  facebook_url: 'https://facebook.com/cambodiataxicab',
+  facebook_url: 'https://www.facebook.com/share/1GJ3q4juxH/',
+  facebook_urls: [
+    'https://www.facebook.com/share/1RuymZzgiW/',
+    'https://www.facebook.com/share/1EPMmamLiA/',
+  ],
   instagram_url: 'https://instagram.com/cambodiataxicab',
   tiktok_url: 'https://tiktok.com/@cambodiataxicab',
   telegram_url: 'https://t.me/85516509371',
   youtube_url: 'https://youtube.com',
   google_maps_url: 'https://g.page/r/Cfj43rFGkhoIEBM/review',
-  google_business_url: 'https://share.google/Ljpk5Hrnv7dRM2RcD',
+  google_business_url: 'https://share.google/dsFHrDxmgPsNMddXF',
+  tripadvisor_url: 'https://www.tripadvisor.com/Attraction_Review-g293940-d12293659-Reviews-Cambodia_cab_drivers-Phnom_Penh.html',
   primary_color: '#1d4ed8', // Royal Blue
   accent_color: '#f59e0b', // Amber
   footer_description: 'Cambodia Taxi Cab (cambodiataxicab.com) is your trusted private transportation partner in the Kingdom of Wonder. Enjoy fixed transparent rates, clean modern vehicles, and personalized service with our professional English-speaking drivers.',

@@ -22,3 +22,12 @@ const byteaToDataUrl = (value?: string | null, mimeType?: string | null): string
 /** Prefer an image saved directly in PostgreSQL, otherwise use the normal URL. */
 export const featuredImageSrc = (image: FeaturedImageRecord): string =>
   byteaToDataUrl(image.featured_image_data, image.featured_image_mime) || image.featured_image || '';
+
+export interface StandardImageRecord {
+  image_url?: string | null;
+  image_data?: string | null;
+  image_mime?: string | null;
+}
+
+export const imageSrc = (image: StandardImageRecord): string =>
+  byteaToDataUrl(image.image_data, image.image_mime) || image.image_url || '';

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { RoutePricing } from '../../types';
 import { Route, Plus, Edit, Trash2, Check, X, Search, DollarSign, Clock, MapPin, Sparkles } from 'lucide-react';
+import { ImageUploadField } from './ImageUploadField';
+import { imageSrc } from '../../lib/images';
 
 export const AdminRoutes: React.FC = () => {
   const { routes = [], saveRoute, deleteRoute, siteSettings } = useApp();
@@ -124,7 +126,7 @@ export const AdminRoutes: React.FC = () => {
             {/* Image Preview & Badges */}
             <div className="relative h-44 w-full bg-slate-100 overflow-hidden">
               <img 
-                src={r.image_url || 'https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=800&auto=format&fit=crop'} 
+                src={imageSrc(r) || 'https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=800&auto=format&fit=crop'}
                 alt={r.route_name}
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
@@ -206,10 +208,10 @@ export const AdminRoutes: React.FC = () => {
 
       {/* Create / Edit Modal */}
       {isEditing && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl p-6 shadow-2xl space-y-5 my-8 text-slate-800">
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-start sm:items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain p-4 sm:p-6 shadow-2xl space-y-5 my-auto text-slate-800">
             
-            <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div className="sticky top-0 z-10 -mx-4 sm:-mx-6 -mt-4 sm:-mt-6 px-4 sm:px-6 pt-4 sm:pt-6 pb-4 bg-white flex items-center justify-between gap-3 border-b border-slate-200">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Route className="w-5 h-5 text-red-600" />
                 {selectedRoute ? `Edit Route: ${selectedRoute.route_name}` : 'Add New Route & Pricing'}
@@ -348,16 +350,7 @@ export const AdminRoutes: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-slate-700 font-semibold mb-1">Route Photo / Image URL</label>
-                <input
-                  type="url"
-                  placeholder="https://..."
-                  value={formData.image_url || ''}
-                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden"
-                />
-              </div>
+              <ImageUploadField label="Route Image — URL, Storage, or Database" value={formData.image_url} binaryData={formData.image_data} binaryMime={formData.image_mime} onChange={(image_url) => setFormData({ ...formData, image_url })} onDatabaseImageChange={(image_data, image_mime) => setFormData({ ...formData, image_data, image_mime })} />
 
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">Route Description</label>
@@ -403,7 +396,7 @@ export const AdminRoutes: React.FC = () => {
                 </label>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+              <div className="sticky bottom-0 -mx-4 sm:-mx-6 px-4 sm:px-6 pb-1 pt-4 bg-white flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}

@@ -345,6 +345,27 @@ export const AdminSettings: React.FC = () => {
                 className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden"
               />
             </div>
+
+            <div>
+              <label className="block text-slate-700 font-semibold mb-1">Google Business URL</label>
+              <input type="url" value={formData.google_business_url || ''} onChange={(e) => setFormData({ ...formData, google_business_url: e.target.value })} className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden" />
+            </div>
+
+            <div>
+              <label className="block text-slate-700 font-semibold mb-1">TripAdvisor URL</label>
+              <input type="url" value={formData.tripadvisor_url || ''} onChange={(e) => setFormData({ ...formData, tripadvisor_url: e.target.value })} className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden" />
+            </div>
+
+            {[1, 2].map((index) => (
+              <div key={index}>
+                <label className="block text-slate-700 font-semibold mb-1">Facebook URL {index + 1}</label>
+                <input type="url" value={formData.facebook_urls?.[index - 1] || ''} onChange={(e) => {
+                  const facebook_urls = [...(formData.facebook_urls || [])];
+                  facebook_urls[index - 1] = e.target.value;
+                  setFormData({ ...formData, facebook_urls });
+                }} className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden" />
+              </div>
+            ))}
           </div>
         </div>
 
