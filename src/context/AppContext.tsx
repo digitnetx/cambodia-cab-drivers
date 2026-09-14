@@ -442,19 +442,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
     }
 
-    // 3. Send confirmation email via backend
-    try {
-      fetch('/api/email/booking-confirmation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...newBooking,
-        }),
-      }).catch(err => console.error('Booking email error:', err));
-    } catch (e) {
-      console.error('Email API call error:', e);
-    }
-
     return newBooking;
   };
 
@@ -525,23 +512,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } catch (e) {
         console.error('Error saving contact message to Supabase:', e);
       }
-    }
-
-    // Send confirmation email
-    try {
-      fetch('/api/email/message-confirmation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: newMsg.name,
-          email: newMsg.email,
-          phone: newMsg.phone,
-          subject: newMsg.subject,
-          message: newMsg.message,
-        }),
-      }).catch(err => console.error('Contact email dispatch error:', err));
-    } catch (e) {
-      console.error('Contact email API error:', e);
     }
 
     return newMsg;

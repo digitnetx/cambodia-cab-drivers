@@ -178,8 +178,8 @@ export const AdminBookings: React.FC = () => {
 
       {/* Bookings List Table */}
       <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+        <div className="overflow-x-auto overscroll-x-contain">
+          <table className="w-full min-w-[1120px] text-left text-xs">
             <thead className="bg-[#FAF9F6] text-slate-700 uppercase tracking-wider font-bold border-b border-slate-200">
               <tr>
                 <th className="py-3.5 px-4">Ref / Date</th>
@@ -188,7 +188,7 @@ export const AdminBookings: React.FC = () => {
                 <th className="py-3.5 px-4">Vehicle & Pax</th>
                 <th className="py-3.5 px-4">Price</th>
                 <th className="py-3.5 px-4">Status</th>
-                <th className="py-3.5 px-4 text-right">Actions</th>
+                <th className="sticky right-0 z-20 bg-[#FAF9F6] py-3.5 px-4 text-right shadow-[-8px_0_14px_-12px_rgba(15,23,42,0.45)]">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -202,7 +202,7 @@ export const AdminBookings: React.FC = () => {
                 filteredBookings.map((b) => {
                   const waUrl = getWhatsAppBookingUrl(b, siteSettings);
                   return (
-                    <tr key={b.id} className="hover:bg-slate-50/80 transition">
+                    <tr key={b.id} className="group hover:bg-slate-50/80 transition">
                       
                       {/* Ref & Date */}
                       <td className="py-3.5 px-4 whitespace-nowrap">
@@ -263,33 +263,39 @@ export const AdminBookings: React.FC = () => {
                       </td>
 
                       {/* Actions */}
-                      <td className="py-3.5 px-4 text-right whitespace-nowrap">
-                        <div className="flex items-center justify-end gap-1.5">
+                      <td className="sticky right-0 z-10 bg-white py-3.5 px-4 text-right whitespace-nowrap shadow-[-8px_0_14px_-12px_rgba(15,23,42,0.45)] transition-colors group-hover:bg-slate-50/80">
+                        <div className="flex min-w-[222px] items-center justify-end gap-2">
                           
                           <a
                             href={waUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             title="Chat on WhatsApp"
-                            className="p-1.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg transition border border-red-200"
+                            aria-label={`Chat with ${b.customer_name} on WhatsApp`}
+                            className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-2.5 py-2 font-semibold text-red-700 transition hover:bg-red-100"
                           >
-                            <MessageSquare className="w-3.5 h-3.5" />
+                            <MessageSquare className="h-4 w-4 shrink-0" />
+                            <span className="hidden xl:inline">WhatsApp</span>
                           </a>
 
                           <button
                             onClick={() => handleOpenEdit(b)}
                             title="Edit booking"
-                            className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition border border-slate-300 cursor-pointer"
+                            aria-label={`Edit booking ${b.booking_reference}`}
+                            className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg border border-slate-300 bg-slate-100 px-2.5 py-2 font-semibold text-slate-700 transition hover:bg-slate-200 cursor-pointer"
                           >
-                            <Edit className="w-3.5 h-3.5" />
+                            <Edit className="h-4 w-4 shrink-0" />
+                            <span className="hidden xl:inline">Edit</span>
                           </button>
 
                           <button
                             onClick={() => handleDelete(b.id, b.booking_reference)}
                             title="Delete booking"
-                            className="p-1.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg transition border border-red-200 cursor-pointer"
+                            aria-label={`Delete booking ${b.booking_reference}`}
+                            className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-2.5 py-2 font-semibold text-red-700 transition hover:bg-red-100 cursor-pointer"
                           >
-                            <Trash2 className="w-3.5 h-3.5" />
+                            <Trash2 className="h-4 w-4 shrink-0" />
+                            <span className="hidden xl:inline">Delete</span>
                           </button>
 
                         </div>
@@ -306,10 +312,10 @@ export const AdminBookings: React.FC = () => {
 
       {/* Edit / Create Modal */}
       {(isEditing || isCreating) && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl p-6 shadow-2xl space-y-5 my-8 text-slate-800">
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-3 backdrop-blur-xs sm:items-center sm:p-4">
+          <div className="my-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-4 text-slate-800 shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:p-6">
             
-            <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div className="sticky top-0 z-10 -mx-4 mb-5 flex items-center justify-between border-b border-slate-200 bg-white px-4 pb-4 sm:-mx-6 sm:px-6">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-red-600" />
                 {isCreating ? 'Create Manual Booking' : `Edit Booking #${selectedBooking?.booking_reference}`}
@@ -492,17 +498,17 @@ export const AdminBookings: React.FC = () => {
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+              <div className="sticky bottom-0 z-10 -mx-4 mt-5 flex flex-col-reverse gap-2 border-t border-slate-200 bg-white px-4 pt-4 sm:-mx-6 sm:flex-row sm:items-center sm:justify-end sm:px-6">
                 <button
                   type="button"
                   onClick={() => { setIsEditing(false); setIsCreating(false); }}
-                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition cursor-pointer border border-slate-300"
+                  className="w-full rounded-xl border border-slate-300 bg-slate-100 px-4 py-2.5 font-bold text-slate-700 transition hover:bg-slate-200 cursor-pointer sm:w-auto"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition shadow-md cursor-pointer"
+                  className="w-full rounded-xl bg-red-600 px-5 py-2.5 font-bold text-white shadow-md transition hover:bg-red-700 cursor-pointer sm:w-auto"
                 >
                   {isCreating ? 'Create Booking' : 'Save Changes'}
                 </button>

@@ -4,6 +4,7 @@ import { Booking } from '../../types';
 import { z } from 'zod';
 import { Calendar, Clock, MapPin, Users, Phone, Mail, User, Luggage, Plane, Building, MessageSquare, CheckCircle, ArrowRight } from 'lucide-react';
 import { getWhatsAppBookingUrl } from '../../lib/whatsapp';
+import { submitToFormspree } from '../../lib/formspree';
 
 const bookingSchema = z.object({
   customer_name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -69,6 +70,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [completedBooking, setCompletedBooking] = useState<Booking | null>(null);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (initialTourId) {
@@ -99,6 +101,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
+    setSubmitError('');
 
     const result = bookingSchema.safeParse(formData);
     if (!result.success) {
@@ -114,6 +117,25 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
     setIsSubmitting(true);
     try {
+      await submitToFormspree({
+        _subject: 'New booking request',
+        form_type: 'Booking request',
+        customer_name: formData.customer_name,
+        email: formData.email,
+        phone: formData.phone,
+        whatsapp: formData.whatsapp || formData.phone,
+        service_or_tour: formData.service_name,
+        pickup_location: formData.pickup_location,
+        destination: formData.destination,
+        travel_date: formData.travel_date,
+        pickup_time: formData.pickup_time,
+        passengers: formData.passengers,
+        luggage: formData.luggage,
+        flight_number: formData.flight_number,
+        hotel_name: formData.hotel_name,
+        special_requests: formData.special_requests,
+      });
+
       const created = await addBooking({
         customer_name: formData.customer_name,
         email: formData.email,
@@ -136,6 +158,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       setCompletedBooking(created);
     } catch (err) {
       console.error(err);
+      setSubmitError(err instanceof Error ? err.message : 'Booking submission failed. Please try again or contact us on WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
@@ -496,6 +519,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       </div>
 
       <div className="pt-4 border-t border-slate-100">
+        {submitError && (
+          <div role="alert" className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+            {submitError}
+          </div>
+        )}
         <button
           type="submit"
           disabled={isSubmitting}

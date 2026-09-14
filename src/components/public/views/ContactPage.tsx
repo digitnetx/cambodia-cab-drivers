@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../../context/AppContext';
 import { Breadcrumbs } from '../../layout/Breadcrumbs';
 import { getWhatsAppGeneralUrl, PHONE_NUMBER } from '../../../lib/whatsapp';
+import { submitToFormspree } from '../../../lib/formspree';
 import { Phone, Mail, MapPin, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
 
 export const ContactPage: React.FC = () => {
@@ -15,24 +16,33 @@ export const ContactPage: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
+    setSubmitError('');
     try {
-      await addContactMessage({
+      const message = {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         subject: formData.subject || 'General Inquiry',
         message: formData.message,
+      };
+      await submitToFormspree({
+        _subject: `Website contact: ${message.subject}`,
+        form_type: 'Contact message',
+        ...message,
       });
+      await addContactMessage(message);
       setSubmitted(true);
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch (err) {
       console.error(err);
+      setSubmitError(err instanceof Error ? err.message : 'Message submission failed. Please try again or contact us on WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
@@ -246,6 +256,12 @@ export const ContactPage: React.FC = () => {
                       className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-500 focus:bg-white transition"
                     />
                   </div>
+
+                  {submitError && (
+                    <div role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                      {submitError}
+                    </div>
+                  )}
 
                   <button
                     type="submit"

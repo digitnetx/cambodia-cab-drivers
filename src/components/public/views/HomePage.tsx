@@ -11,9 +11,10 @@ import { DiscountPromoSection } from '../DiscountPromoSection';
 import { HowItWorks } from '../HowItWorks';
 import { TourCard } from '../TourCard';
 import { DestinationCard } from '../DestinationCard';
+import { ServiceCard } from '../ServiceCard';
 import { FAQAccordion } from '../FAQAccordion';
 import { getWhatsAppGeneralUrl, getTelegramUrl } from '../../../lib/whatsapp';
-import { ShieldCheck, MessageSquare, ArrowRight, Compass, Car, MapPin, Award, CheckCircle2, Star, Send, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ShieldCheck, MessageSquare, ArrowRight, Compass, Car, MapPin, Award, CheckCircle2, Star, Send, ChevronLeft, ChevronRight, Images, Layers } from 'lucide-react';
 
 const HERO_SLIDES = [
   {
@@ -54,7 +55,7 @@ const HERO_SLIDES = [
 ];
 
 export const HomePage: React.FC = () => {
-  const { homepageSettings, tours = [], destinations = [], faqs = [], navigate, t, language } = useApp();
+  const { homepageSettings, tours = [], destinations = [], services = [], mediaItems = [], faqs = [], navigate, t, language } = useApp();
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [isPaused, setIsPaused] = React.useState(false);
 
@@ -85,6 +86,8 @@ export const HomePage: React.FC = () => {
   const featuredTours = activeTours.some((t) => t.is_featured) ? activeTours.filter((t) => t.is_featured) : activeTours;
   const featuredDestinations = activeDestinations.some((d) => d.is_featured) ? activeDestinations.filter((d) => d.is_featured) : activeDestinations;
   const publishedFaqs = (faqs || []).filter((f) => f && f.is_published);
+  const activeServices = (services || []).filter((service) => service && service.is_active).sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+  const homepageMedia = (mediaItems || []).filter((media) => media && media.url).slice(0, 6);
 
   return (
     <div className="space-y-0 text-slate-900 bg-[#F7F5F0]">
@@ -263,6 +266,30 @@ export const HomePage: React.FC = () => {
       {/* 5. VEHICLES SELECTION */}
       <VehicleSelectionSection />
 
+      {/* 6. SERVICES MANAGED IN THE ADMIN CMS */}
+      {activeServices.length > 0 && (
+        <section className="border-b border-slate-200 bg-white py-20 text-slate-900">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+              <div>
+                <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-red-600">
+                  <Layers className="h-3.5 w-3.5" />
+                  <span>Book with confidence</span>
+                </div>
+                <h2 className="font-sans text-2xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">Our Transportation Services</h2>
+                <p className="mt-2 max-w-2xl text-sm text-slate-600">Choose an airport transfer, private city ride, long-distance transfer, or a driver for your custom Cambodia itinerary.</p>
+              </div>
+              <button onClick={() => navigate('/services')} className="inline-flex items-center gap-1.5 text-xs font-extrabold text-red-600 hover:text-red-700 cursor-pointer">
+                <span>View All Services</span><ArrowRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {activeServices.slice(0, 6).map((service) => <ServiceCard key={service.id} service={service} />)}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 6. HOW IT WORKS & DISPATCH DESK */}
       <HowItWorks />
 
@@ -343,7 +370,28 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 10. FAQ SECTION */}
+      {/* 10. PHOTOS ADDED THROUGH THE MEDIA LIBRARY */}
+      {homepageMedia.length > 0 && (
+        <section className="border-b border-slate-200 bg-white py-20 text-slate-900">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mb-10 text-center">
+              <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-red-600"><Images className="h-3.5 w-3.5" /> Cambodia in pictures</div>
+              <h2 className="font-sans text-2xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">Travel Gallery</h2>
+              <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600">A look at the vehicles, airport pickups, and destinations our team can help you experience.</p>
+            </div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+              {homepageMedia.map((media) => (
+                <figure key={media.id} className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">
+                  <img src={media.url} alt={media.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 to-transparent px-3 pb-3 pt-10 text-xs font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">{media.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 11. FAQ SECTION */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
