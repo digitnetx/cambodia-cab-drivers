@@ -6,6 +6,7 @@ import { Logo } from '../common/Logo';
 
 export const Footer: React.FC = () => {
   const { navigate, siteSettings } = useApp();
+  const bookingEmail = 'sarethtaxidriver@gmail.com';
 
   const handleNavClick = (href: string) => {
     navigate(href);
@@ -160,8 +161,8 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-red-600 shrink-0" />
-                <a href={`mailto:${siteSettings.email}`} className="hover:text-red-600 text-slate-700 transition">
-                  {siteSettings.email}
+                <a href={`mailto:${bookingEmail}`} className="hover:text-red-600 text-slate-700 transition">
+                  {bookingEmail}
                 </a>
               </li>
               {accountLinks.length > 0 && (

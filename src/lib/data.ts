@@ -13,7 +13,7 @@ export const INITIAL_SITE_SETTINGS: SiteSettings = {
   phone: '+855 16 509 371',
   whatsapp: '+855 16 509 371',
   telegram: '+855 16 509 371',
-  email: 'digitnetx@gmail.com',
+  email: 'sarethtaxidriver@gmail.com',
   address: '#61, Oknha Chrun Youhak (294), Boeung Keng Kang I, Chamkarmon, Phnom Penh 12302, Cambodia',
   working_hours: '24/7 Available (Advance Booking & Flight Monitoring)',
   emergency_contact: '+855 16 509 371',
