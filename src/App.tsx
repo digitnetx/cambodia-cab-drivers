@@ -4,6 +4,7 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { FloatingWhatsApp } from './components/layout/FloatingWhatsApp';
 import { MobileBottomBar } from './components/public/MobileBottomBar';
+import { AdSenseUnit } from './components/public/AdSenseUnit';
 import { Toast } from './components/layout/Toast';
 
 // Public views
@@ -267,6 +268,7 @@ const RouterContent: React.FC = () => {
     <div className="min-h-screen bg-[#FAF9F6] text-slate-900 flex flex-col font-sans selection:bg-red-600 selection:text-white pb-14 md:pb-0">
       <Header />
       <main className="flex-1">{viewComponent}</main>
+      <AdSenseUnit />
       <Footer />
       <FloatingWhatsApp />
       <MobileBottomBar />
