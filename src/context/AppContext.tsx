@@ -925,19 +925,30 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Media Library CMS (Database Persisted)
   const saveMediaItem = async (item: Partial<MediaItem>) => {
     if (item.id) {
+      const saved = await api.updateItem('mediaItems', item.id, item);
+      if (!saved) {
+        showToast(`Media was not saved: ${api.getLastWriteError() || 'Check the database schema and permissions.'}`, 'error');
+        return;
+      }
       setMediaItems(prev => prev.map(m => m.id === item.id ? { ...m, ...item } as MediaItem : m));
-      await api.updateItem('mediaItems', item.id, item);
       showToast('Media updated in database');
     } else {
       const newItem: MediaItem = {
         id: crypto.randomUUID(),
         title: item.title || 'Uploaded Asset',
         url: item.url || '',
+        binary_data: item.binary_data || null,
+        mime_type: item.mime_type || null,
+        storage_type: item.storage_type || (item.binary_data ? 'bytea' : 'url'),
         category: item.category || 'general',
         created_at: new Date().toISOString(),
       };
-      setMediaItems(prev => [newItem, ...prev]);
-      await api.insertItem('mediaItems', newItem);
+      const saved = await api.insertItem('mediaItems', newItem);
+      if (!saved) {
+        showToast(`Media was not saved: ${api.getLastWriteError() || 'Check the database schema and permissions.'}`, 'error');
+        return;
+      }
+      setMediaItems(prev => [saved, ...prev]);
       showToast('Media added to database');
     }
   };

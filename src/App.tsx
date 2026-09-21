@@ -141,6 +141,7 @@ const RouterContent: React.FC = () => {
     if (metaDesc) {
       metaDesc.setAttribute('content', description);
     }
+    document.querySelector('meta[name="title"]')?.setAttribute('content', title);
 
     // Update OpenGraph Title & Description
     const ogTitle = document.querySelector('meta[property="og:title"]');
@@ -151,6 +152,8 @@ const RouterContent: React.FC = () => {
     if (ogDesc) {
       ogDesc.setAttribute('content', description);
     }
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
 
     // Keep every public SPA route self-canonical and shareable after navigation.
     const canonicalUrl = `https://www.cambodiataxicab.com${pathWithoutQuery === '/' ? '/' : pathWithoutQuery}`;

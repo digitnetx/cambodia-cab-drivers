@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { MediaItem } from '../../types';
 import { Image as ImageIcon, Plus, Trash2, Copy, Check, X, Search, Filter } from 'lucide-react';
+import { ImageUploadField } from './ImageUploadField';
+import { featuredImageSrc } from '../../lib/images';
 
 export const AdminMedia: React.FC = () => {
   const { mediaItems = [], saveMediaItem, deleteMediaItem, showToast } = useApp();
@@ -32,8 +34,8 @@ export const AdminMedia: React.FC = () => {
 
   const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.url || !formData.title) {
-      alert('Please provide image title and URL');
+    if (!formData.title || (!formData.url && !formData.binary_data)) {
+      alert('Please provide an asset title and either an image URL or an uploaded image.');
       return;
     }
     await saveMediaItem(formData);
@@ -120,7 +122,7 @@ export const AdminMedia: React.FC = () => {
             >
               <div className="relative h-44 bg-slate-100 overflow-hidden">
                 <img 
-                  src={m.url} 
+                  src={featuredImageSrc({ featured_image: m.url, featured_image_data: m.binary_data, featured_image_mime: m.mime_type })}
                   alt={m.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
@@ -139,7 +141,7 @@ export const AdminMedia: React.FC = () => {
 
               <div className="p-3 bg-white border-t border-slate-100 flex items-center justify-between gap-2">
                 <button
-                  onClick={() => handleCopy(m.url, m.id)}
+                  onClick={() => m.url ? handleCopy(m.url, m.id) : showToast('Database images are saved directly in Supabase and do not have a shareable URL.', 'info')}
                   className={`flex-1 flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition cursor-pointer ${
                     isCopied
                       ? 'bg-red-600 text-white shadow-md'
@@ -147,7 +149,7 @@ export const AdminMedia: React.FC = () => {
                   }`}
                 >
                   {isCopied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{isCopied ? 'Copied' : 'Copy URL'}</span>
+                  <span>{isCopied ? 'Copied' : m.url ? 'Copy URL' : 'BYTEA image'}</span>
                 </button>
 
                 <button
@@ -192,17 +194,20 @@ export const AdminMedia: React.FC = () => {
                 />
               </div>
 
-              <div>
-                <label className="block text-slate-700 font-semibold mb-1">Direct Image URL *</label>
-                <input
-                  type="url"
-                  required
-                  placeholder="https://images.unsplash.com/..."
-                  value={formData.url || ''}
-                  onChange={(e) => setFormData({ ...formData, url: e.target.value })}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden font-mono"
-                />
-              </div>
+              <ImageUploadField
+                label="Image — paste URL, upload to Storage, or store directly in Database"
+                value={formData.url || ''}
+                binaryData={formData.binary_data}
+                binaryMime={formData.mime_type}
+                onChange={(url) => setFormData({ ...formData, url, binary_data: null, mime_type: null, storage_type: 'url' })}
+                onDatabaseImageChange={(binary_data, mime_type) => setFormData({
+                  ...formData,
+                  url: binary_data ? '' : formData.url,
+                  binary_data,
+                  mime_type,
+                  storage_type: binary_data ? 'bytea' : 'url',
+                })}
+              />
 
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">Category</label>
@@ -220,9 +225,9 @@ export const AdminMedia: React.FC = () => {
                 </select>
               </div>
 
-              {formData.url && (
+              {(formData.url || formData.binary_data) && (
                 <div className="rounded-xl overflow-hidden border border-slate-200 h-32 bg-slate-100">
-                  <img src={formData.url} alt="Preview" className="w-full h-full object-cover" />
+                  <img src={featuredImageSrc({ featured_image: formData.url, featured_image_data: formData.binary_data, featured_image_mime: formData.mime_type })} alt="Preview" className="w-full h-full object-cover" />
                 </div>
               )}
 

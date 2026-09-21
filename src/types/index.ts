@@ -367,6 +367,9 @@ export interface MediaItem {
   id: string;
   title: string;
   url: string;
+  binary_data?: string | null;
+  mime_type?: string | null;
+  storage_type?: 'url' | 'bytea' | 'supabase_storage' | null;
   category: 'hero' | 'vehicles' | 'tours' | 'destinations' | 'drivers' | 'services' | 'general';
   created_at: string;
 }

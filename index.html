@@ -44,33 +44,44 @@
     <link rel="icon" type="image/svg+xml" href="/logo-icon.svg" />
     <link rel="apple-touch-icon" href="/logo-icon.svg" />
 
-    <!-- Structured Data (Schema.org) for LocalBusiness & TaxiService -->
+    <!-- Structured Data (Schema.org) for LocalBusiness, TaxiService, and the website -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "TaxiService",
-      "name": "Cambodia Taxi Cab",
-      "@id": "https://www.cambodiataxicab.com/#taxi-service",
-      "image": "https://www.cambodiataxicab.com/logo.svg",
-      "logo": "https://www.cambodiataxicab.com/logo.svg",
-      "description": "Professional private taxi, driver fleet, airport transfers and tour transportation services in Cambodia on cambodiataxicab.com with English-speaking drivers.",
-      "url": "https://www.cambodiataxicab.com/",
-      "telephone": "+85516509371",
-      "priceRange": "$$",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Cambodia"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Cambodia Taxi Cab",
-        "url": "https://www.cambodiataxicab.com/"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "185"
-      }
+      "@graph": [
+        {
+          "@type": ["TaxiService", "LocalBusiness"],
+          "@id": "https://www.cambodiataxicab.com/#taxi-service",
+          "name": "Cambodia Taxi Cab",
+          "image": "https://www.cambodiataxicab.com/logo.svg",
+          "logo": "https://www.cambodiataxicab.com/logo.svg",
+          "description": "Professional private taxi, driver fleet, airport transfers and tour transportation services in Cambodia with English-speaking drivers.",
+          "url": "https://www.cambodiataxicab.com/",
+          "telephone": "+85516509371",
+          "email": "sarethtaxidriver@gmail.com",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "KH"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Cambodia"
+          },
+          "openingHours": "Mo-Su 00:00-23:59",
+          "sameAs": [
+            "https://www.facebook.com/share/1GJ3q4juxH/",
+            "https://www.tripadvisor.com/Attraction_Review-g293940-d12293659-Reviews-Cambodia_cab_drivers-Phnom_Penh.html"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.cambodiataxicab.com/#website",
+          "url": "https://www.cambodiataxicab.com/",
+          "name": "Cambodia Taxi Cab",
+          "inLanguage": "en"
+        }
+      ]
     }
     </script>
   </head>
