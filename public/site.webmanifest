@@ -1,0 +1,17 @@
+{
+  "name": "Cambodia Taxi Cab",
+  "short_name": "Cambodia Taxi Cab",
+  "description": "Private taxi transfers, airport pickups, and local driver tours across Cambodia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#070B1C",
+  "icons": [
+    {
+      "src": "/logo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -13,6 +13,12 @@ export const Footer: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
+  const SpaLink: React.FC<React.PropsWithChildren<{ href: string; className?: string; 'aria-label'?: string }>> = ({ href, className, children, ...props }) => (
+    <a href={href} className={className} onClick={(event) => { event.preventDefault(); handleNavClick(href); }} {...props}>
+      {children}
+    </a>
+  );
+
   const accountLinks = [
     { label: 'Google Business', url: siteSettings.google_business_url },
     { label: 'Facebook', url: siteSettings.facebook_url },
@@ -27,13 +33,13 @@ export const Footer: React.FC = () => {
           
           {/* Col 1 & 2: Branding & Intro */}
           <div className="lg:col-span-2 space-y-4">
-            <button
-              onClick={() => handleNavClick('/')}
+            <SpaLink
+              href="/"
               className="text-left focus:outline-none cursor-pointer"
               aria-label="Cambodia Taxi Cab Home"
             >
               <Logo variant="horizontal" size="lg" />
-            </button>
+            </SpaLink>
 
             <p className="text-sm text-slate-600 leading-relaxed pr-4">
               {siteSettings.footer_description || `Welcome to ${siteSettings.business_name || 'Cambodia Taxi Cab'} (cambodiataxicab.com). Operating in Phnom Penh and providing private driver transportation, airport transfers, city-to-city travel, and customized sightseeing tours across Cambodia with our professional English-speaking driver fleet.`}
@@ -49,13 +55,13 @@ export const Footer: React.FC = () => {
                 <MessageSquare className="w-4 h-4 text-red-600" />
                 WhatsApp Us
               </a>
-              <button
-                onClick={() => handleNavClick('/book')}
+              <SpaLink
+                href="/book"
                 className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold rounded-xl bg-red-600 text-white hover:bg-red-700 transition shadow-md shadow-red-600/20 cursor-pointer"
               >
                 Book Your Ride
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </SpaLink>
             </div>
           </div>
 
@@ -66,34 +72,34 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li>
-                <button onClick={() => handleNavClick('/')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/" className="hover:text-red-600 transition cursor-pointer">
                   Home
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/about')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/about" className="hover:text-red-600 transition cursor-pointer">
                   About Our Fleet
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/services')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/services" className="hover:text-red-600 transition cursor-pointer">
                   Transportation Services
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/transfers')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/transfers" className="hover:text-red-600 transition cursor-pointer">
                   Airport & City Transfers
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/tours')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/tours" className="hover:text-red-600 transition cursor-pointer">
                   Sightseeing Tours
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/destinations')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/destinations" className="hover:text-red-600 transition cursor-pointer">
                   Cambodia Destinations
-                </button>
+                </SpaLink>
               </li>
             </ul>
           </div>
@@ -105,29 +111,29 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li>
-                <button onClick={() => handleNavClick('/transfers')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/transfers" className="hover:text-red-600 transition cursor-pointer">
                   Phnom Penh Airport Pickup
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/private-driver')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/private-driver" className="hover:text-red-600 transition cursor-pointer">
                   Private Driver Hire
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/tours/angkor-wat-sunrise-tour')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/tours/angkor-wat-sunrise-tour" className="hover:text-red-600 transition cursor-pointer">
                   Angkor Wat Sunrise Tour
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/transfers')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/transfers" className="hover:text-red-600 transition cursor-pointer">
                   Phnom Penh to Siem Reap
-                </button>
+                </SpaLink>
               </li>
               <li>
-                <button onClick={() => handleNavClick('/transfers')} className="hover:text-red-600 transition cursor-pointer">
+                <SpaLink href="/transfers" className="hover:text-red-600 transition cursor-pointer">
                   Kampot & Kep Taxi
-                </button>
+                </SpaLink>
               </li>
             </ul>
           </div>
@@ -186,12 +192,12 @@ export const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>{siteSettings.copyright_text || '© 2026 cambodiataxicab.com. All rights reserved.'}</p>
           <div className="flex items-center gap-6">
-            <button onClick={() => handleNavClick('/privacy')} className="hover:text-slate-900 transition cursor-pointer">
+            <SpaLink href="/privacy" className="hover:text-slate-900 transition cursor-pointer">
               Privacy Policy
-            </button>
-            <button onClick={() => handleNavClick('/terms')} className="hover:text-slate-900 transition cursor-pointer">
+            </SpaLink>
+            <SpaLink href="/terms" className="hover:text-slate-900 transition cursor-pointer">
               Terms & Conditions
-            </button>
+            </SpaLink>
           </div>
         </div>
 

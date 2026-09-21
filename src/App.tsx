@@ -106,8 +106,8 @@ const RouterContent: React.FC = () => {
       const slug = pathWithoutQuery.replace('/services/', '');
       const srv = services.find((s) => s.slug === slug);
       if (srv) {
-        title = `${srv.title} | Cambodia Taxi Cab`;
-        description = srv.short_description || description;
+        title = `${srv.seo_title || srv.name} | Cambodia Taxi Cab`;
+        description = srv.seo_description || srv.short_description || description;
       }
     } else if (pathWithoutQuery === '/private-driver') {
       title = 'Hire a Private Driver with Car in Cambodia | Cambodia Taxi Cab';
@@ -128,8 +128,8 @@ const RouterContent: React.FC = () => {
     } else {
       const matchedRoute = routes.find((r) => `/${r.slug}` === pathWithoutQuery);
       if (matchedRoute) {
-        title = `${matchedRoute.title} | Fixed Price Taxi - Cambodia Taxi Cab`;
-        description = matchedRoute.short_description || description;
+        title = `${matchedRoute.seo_title || matchedRoute.route_name} | Fixed Price Taxi - Cambodia Taxi Cab`;
+        description = matchedRoute.seo_description || matchedRoute.description || description;
       }
     }
 
@@ -151,6 +151,13 @@ const RouterContent: React.FC = () => {
     if (ogDesc) {
       ogDesc.setAttribute('content', description);
     }
+
+    // Keep every public SPA route self-canonical and shareable after navigation.
+    const canonicalUrl = `https://www.cambodiataxicab.com${pathWithoutQuery === '/' ? '/' : pathWithoutQuery}`;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    canonical?.setAttribute('href', canonicalUrl);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+    document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', canonicalUrl);
   }, [pathWithoutQuery, routes, tours, destinations, services, seoSettings]);
 
   // Check if route is an Admin route

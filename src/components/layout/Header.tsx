@@ -47,22 +47,24 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           
           {/* Logo */}
-          <button
-            onClick={() => handleNavClick('/')}
+          <a
+            href="/"
+            onClick={(event) => { event.preventDefault(); handleNavClick('/'); }}
             className="flex items-center text-left focus:outline-none cursor-pointer"
             aria-label="Cambodia Taxi Cab Home"
           >
             <Logo variant="horizontal" size="md" />
-          </button>
+          </a>
 
           {/* Desktop Nav Links */}
           <nav className="hidden min-[900px]:flex items-center gap-0.5">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href;
               return (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  href={link.href}
+                  onClick={(event) => { event.preventDefault(); handleNavClick(link.href); }}
                   className={`px-2.5 py-1.5 text-xs font-bold rounded-lg transition cursor-pointer ${
                     isActive
                       ? 'text-white bg-red-600 shadow-xs'
@@ -70,7 +72,7 @@ export const Header: React.FC = () => {
                   }`}
                 >
                   {link.label}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -94,12 +96,13 @@ export const Header: React.FC = () => {
               <span>WhatsApp</span>
             </a>
 
-            <button
-              onClick={() => handleNavClick('/book')}
+            <a
+              href="/book"
+              onClick={(event) => { event.preventDefault(); handleNavClick('/book'); }}
               className="px-4 py-2 text-xs font-extrabold rounded-xl bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-600/20 transition transform active:scale-95 cursor-pointer"
             >
               {t.nav.bookRide}
-            </button>
+            </a>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -111,12 +114,13 @@ export const Header: React.FC = () => {
               <span>{language === 'en' ? '🇰🇭' : '🇺🇸'}</span>
             </button>
 
-            <button
-              onClick={() => handleNavClick('/book')}
+            <a
+              href="/book"
+              onClick={(event) => { event.preventDefault(); handleNavClick('/book'); }}
               className="sm:hidden px-3 py-1.5 text-xs font-extrabold rounded-lg bg-red-600 text-white shadow-xs"
             >
               {t.nav.bookRide}
-            </button>
+            </a>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -136,9 +140,10 @@ export const Header: React.FC = () => {
             {navLinks.map((link) => {
               const isActive = currentPath === link.href;
               return (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  href={link.href}
+                  onClick={(event) => { event.preventDefault(); handleNavClick(link.href); }}
                   className={`text-left px-4 py-3 rounded-xl font-bold text-sm transition cursor-pointer ${
                     isActive
                       ? 'bg-red-600 text-white shadow-sm'
@@ -146,17 +151,18 @@ export const Header: React.FC = () => {
                   }`}
                 >
                   {link.label}
-                </button>
+                </a>
               );
             })}
 
             <div className="pt-4 border-t border-slate-200 mt-2 flex flex-col gap-3">
-              <button
-                onClick={() => handleNavClick('/book')}
+              <a
+                href="/book"
+                onClick={(event) => { event.preventDefault(); handleNavClick('/book'); }}
                 className="w-full py-3 text-center font-extrabold text-sm text-white bg-red-600 hover:bg-red-700 rounded-xl shadow-md transition cursor-pointer"
               >
                 {t.nav.bookRide}
-              </button>
+              </a>
 
               <a
                 href={getWhatsAppGeneralUrl()}

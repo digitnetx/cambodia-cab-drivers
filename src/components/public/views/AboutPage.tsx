@@ -3,13 +3,16 @@ import { useApp } from '../../../context/AppContext';
 import { Breadcrumbs } from '../../layout/Breadcrumbs';
 import { getWhatsAppGeneralUrl, PHONE_NUMBER } from '../../../lib/whatsapp';
 import { UserCheck, ShieldCheck, MapPin, Phone, MessageSquare, Car, Sparkles, Languages, CheckCircle2 } from 'lucide-react';
+import { featuredImageSrc } from '../../../lib/images';
 
 export const AboutPage: React.FC = () => {
   const { navigate, siteSettings, driverProfile } = useApp();
   const [photoError, setPhotoError] = React.useState(false);
 
-  const photoSrc = (!photoError && driverProfile.profile_photo_url)
-    ? driverProfile.profile_photo_url
+  const profileImage = featuredImageSrc({ featured_image: driverProfile.profile_photo_url, featured_image_data: driverProfile.profile_photo_data, featured_image_mime: driverProfile.profile_photo_mime });
+  const coverImage = featuredImageSrc({ featured_image: driverProfile.cover_photo_url, featured_image_data: driverProfile.cover_photo_data, featured_image_mime: driverProfile.cover_photo_mime });
+  const photoSrc = (!photoError && profileImage)
+    ? profileImage
     : (!photoError ? '/sareth.jpeg' : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop');
 
   return (
@@ -22,7 +25,7 @@ export const AboutPage: React.FC = () => {
         <div className="mt-4 mb-16 relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-950 text-white">
           <div className="absolute inset-0 z-0">
             <img
-              src="/background.webp"
+              src={coverImage || '/background.webp'}
               alt="About Sareth & Cambodia Taxi Cab"
               className="w-full h-full object-cover object-center opacity-40 scale-105"
               referrerPolicy="no-referrer"

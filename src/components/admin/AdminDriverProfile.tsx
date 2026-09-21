@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { DriverProfile } from '../../types';
 import { UserCheck, Save, Award, ShieldCheck, Phone, MessageSquare, Star, Plus, X, Image as ImageIcon } from 'lucide-react';
+import { ImageUploadField } from './ImageUploadField';
 
 export const AdminDriverProfile: React.FC = () => {
   const { driverProfile, updateDriverProfile, siteSettings, updateSettings } = useApp();
@@ -153,26 +154,23 @@ export const AdminDriverProfile: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-slate-700 font-semibold mb-1">Driver Profile Photo URL</label>
-              <input
-                type="url"
-                value={formData.profile_photo_url}
-                onChange={(e) => setFormData({ ...formData, profile_photo_url: e.target.value })}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden font-mono"
-              />
-            </div>
-
-            <div>
-              <label className="block text-slate-700 font-semibold mb-1">About Section Cover Photo URL</label>
-              <input
-                type="url"
-                value={formData.cover_photo_url || ''}
-                onChange={(e) => setFormData({ ...formData, cover_photo_url: e.target.value })}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:border-red-500 focus:bg-white focus:outline-hidden font-mono"
-              />
-            </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <ImageUploadField
+              label="Driver Profile Photo — URL or upload"
+              value={formData.profile_photo_url || ''}
+              binaryData={formData.profile_photo_data}
+              binaryMime={formData.profile_photo_mime}
+              onChange={(profile_photo_url) => setFormData((current) => ({ ...current, profile_photo_url }))}
+              onDatabaseImageChange={(profile_photo_data, profile_photo_mime) => setFormData((current) => ({ ...current, profile_photo_data, profile_photo_mime }))}
+            />
+            <ImageUploadField
+              label="About Cover Photo — URL or upload"
+              value={formData.cover_photo_url || ''}
+              binaryData={formData.cover_photo_data}
+              binaryMime={formData.cover_photo_mime}
+              onChange={(cover_photo_url) => setFormData((current) => ({ ...current, cover_photo_url }))}
+              onDatabaseImageChange={(cover_photo_data, cover_photo_mime) => setFormData((current) => ({ ...current, cover_photo_data, cover_photo_mime }))}
+            />
           </div>
         </div>
 

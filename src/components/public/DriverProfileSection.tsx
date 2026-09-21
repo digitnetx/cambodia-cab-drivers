@@ -2,18 +2,20 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { ShieldCheck, Award, MessageSquare, Send, CheckCircle2, Phone, Star } from 'lucide-react';
 import { getWhatsAppGeneralUrl, getTelegramUrl } from '../../lib/whatsapp';
+import { featuredImageSrc } from '../../lib/images';
 
 export const DriverProfileSection: React.FC = () => {
   const { driverProfile, siteSettings, t } = useApp();
   const [photoError, setPhotoError] = React.useState(false);
 
-  const photoSrc = (!photoError && driverProfile.profile_photo_url) 
-    ? driverProfile.profile_photo_url 
+  const profileImage = featuredImageSrc({ featured_image: driverProfile.profile_photo_url, featured_image_data: driverProfile.profile_photo_data, featured_image_mime: driverProfile.profile_photo_mime });
+  const photoSrc = (!photoError && profileImage)
+    ? profileImage
     : (!photoError ? '/sareth.jpeg' : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop');
 
   React.useEffect(() => {
     setPhotoError(false);
-  }, [driverProfile.profile_photo_url]);
+  }, [profileImage]);
 
   return (
     <section id="meet-driver" className="py-20 bg-white text-slate-900 relative overflow-hidden border-b border-slate-200">

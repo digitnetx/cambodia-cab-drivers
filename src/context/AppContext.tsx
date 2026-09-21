@@ -955,8 +955,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       ...newSettings,
       updated_at: new Date().toISOString()
     };
+    const saved = await api.updateSingleton('siteSettings', newSettings);
+    if (!saved) {
+      showToast(`Website settings were not saved: ${api.getLastWriteError() || 'Check your Supabase permissions and schema.'}`, 'error');
+      return;
+    }
     setSiteSettings(updated);
-    await api.updateSingleton('siteSettings', updated);
     showToast('Website settings saved to database');
   };
 
@@ -976,8 +980,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       ...newProfile,
       updated_at: new Date().toISOString(),
     };
+    const saved = await api.updateSingleton('driverProfile', updated);
+    if (!saved) {
+      showToast(`Driver profile was not saved: ${api.getLastWriteError() || 'Check your Supabase admin permissions and try again.'}`, 'error');
+      return;
+    }
     setDriverProfile(updated);
-    await api.updateSingleton('driverProfile', updated);
+    await refreshDatabase();
     showToast('Driver profile saved to database');
   };
 

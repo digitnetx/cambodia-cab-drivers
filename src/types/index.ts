@@ -238,7 +238,11 @@ export interface DriverProfile {
   languages: string[];
   license_info: string;
   profile_photo_url: string;
+  profile_photo_data?: string | null;
+  profile_photo_mime?: string | null;
   cover_photo_url: string;
+  cover_photo_data?: string | null;
+  cover_photo_mime?: string | null;
   phone: string;
   whatsapp: string;
   telegram: string;
