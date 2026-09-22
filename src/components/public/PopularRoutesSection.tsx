@@ -3,6 +3,8 @@ import { useApp } from '../../context/AppContext';
 import { RoutePricing } from '../../types';
 import { MapPin, Clock, ArrowRight, MessageSquare, Car, Sparkles, Navigation } from 'lucide-react';
 import { getWhatsAppRouteUrl } from '../../lib/whatsapp';
+import { defaultRouteVehicle, visibleRouteVehicles } from '../../lib/routeVehicles';
+import { imageSrc } from '../../lib/images';
 
 export const PopularRoutesSection: React.FC = () => {
   const { routes = [], navigate, t, language } = useApp();
@@ -17,11 +19,14 @@ export const PopularRoutesSection: React.FC = () => {
   });
 
   const handleBookRoute = (route: RoutePricing) => {
+    const vehicle = visibleRouteVehicles(route).some((option) => option.type.toLowerCase() === selectedVehicle)
+      ? selectedVehicle
+      : defaultRouteVehicle(route).toLowerCase() as 'sedan' | 'suv' | 'van';
     const query = new URLSearchParams({
       service: route.is_airport ? 'Airport Transfers' : 'City-to-City Transfers',
       pickup: route.origin,
       destination: route.destination,
-      passengers: selectedVehicle === 'van' ? '6' : selectedVehicle === 'suv' ? '3' : '2',
+      passengers: vehicle === 'van' ? '6' : vehicle === 'suv' ? '3' : '2',
     }).toString();
     navigate(`/book?${query}`);
   };
@@ -107,15 +112,24 @@ export const PopularRoutesSection: React.FC = () => {
               {filteredRoutes.map((route) => (
                 <tr key={route.id} className="hover:bg-slate-50 transition">
                   <td className="py-4 px-6">
-                    <div className="font-bold text-slate-900 flex items-center gap-2">
-                      <span className="text-slate-900 font-semibold">{route.route_name}</span>
-                      {route.is_airport && (
-                        <span className="text-[10px] uppercase font-extrabold bg-red-50 text-red-600 px-2 py-0.5 rounded-full border border-red-200">
-                          Airport
-                        </span>
-                      )}
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={imageSrc(route) || 'https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=320&auto=format&fit=crop'}
+                        alt={`${route.route_name} private taxi route`}
+                        className="h-11 w-16 rounded-lg object-cover border border-slate-200 shrink-0"
+                      />
+                      <div>
+                        <div className="font-bold text-slate-900 flex items-center gap-2">
+                          <span className="text-slate-900 font-semibold">{route.route_name}</span>
+                          {route.is_airport && (
+                            <span className="text-[10px] uppercase font-extrabold bg-red-50 text-red-600 px-2 py-0.5 rounded-full border border-red-200">
+                              Airport
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-slate-500 mt-0.5">{route.origin} ➔ {route.destination}</p>
+                      </div>
                     </div>
-                    <p className="text-xs text-slate-500 mt-0.5">{route.origin} ➔ {route.destination}</p>
                   </td>
 
                   <td className="py-4 px-4 text-xs text-slate-600">
@@ -125,26 +139,26 @@ export const PopularRoutesSection: React.FC = () => {
 
                   <td className="py-4 px-4 text-center">
                     <span className="inline-block font-extrabold text-red-600 bg-red-50 border border-red-100 px-3 py-1 rounded-lg">
-                      ${route.sedan_price}
+                      {route.show_sedan === false ? '—' : `$${route.sedan_price}`}
                     </span>
                   </td>
 
                   <td className="py-4 px-4 text-center">
                     <span className="inline-block font-extrabold text-red-600 bg-red-50 border border-red-100 px-3 py-1 rounded-lg">
-                      ${route.suv_price}
+                      {route.show_suv === false ? '—' : `$${route.suv_price}`}
                     </span>
                   </td>
 
                   <td className="py-4 px-4 text-center">
                     <span className="inline-block font-extrabold text-red-600 bg-red-50 border border-red-100 px-3 py-1 rounded-lg">
-                      ${route.van_price}
+                      {route.show_van === false ? '—' : `$${route.van_price}`}
                     </span>
                   </td>
 
                   <td className="py-4 px-6 text-right">
                     <div className="flex items-center justify-end gap-2">
                       <a
-                        href={getWhatsAppRouteUrl(route, 'Sedan')}
+                        href={getWhatsAppRouteUrl(route, defaultRouteVehicle(route))}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 transition"
@@ -172,8 +186,21 @@ export const PopularRoutesSection: React.FC = () => {
           {filteredRoutes.map((route) => (
             <div
               key={route.id}
-              className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:border-red-500/60 transition flex flex-col justify-between"
+              className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-red-500/60 transition flex flex-col justify-between"
             >
+              <div className="relative h-40 bg-slate-100 overflow-hidden">
+                <img
+                  src={imageSrc(route) || 'https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=900&auto=format&fit=crop'}
+                  alt={`${route.route_name} private taxi route`}
+                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/75 via-transparent to-transparent" />
+                <span className="absolute left-3 top-3 text-[10px] font-bold uppercase tracking-wider text-white bg-red-600 px-2 py-1 rounded-md">
+                  {route.is_airport ? 'Airport Transfer' : 'Private Route'}
+                </span>
+                <p className="absolute inset-x-4 bottom-3 text-sm font-extrabold text-white line-clamp-1">{route.route_name}</p>
+              </div>
+              <div className="p-5">
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded-md border border-red-200">
@@ -193,19 +220,13 @@ export const PopularRoutesSection: React.FC = () => {
                 </p>
 
                 {/* Price Breakdown Pills */}
-                <div className="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-100 text-center">
-                  <div className="p-2 rounded-xl bg-slate-50 border border-slate-200">
-                    <div className="text-[10px] text-slate-500 font-semibold">Sedan</div>
-                    <div className="text-sm font-extrabold text-red-600">${route.sedan_price}</div>
-                  </div>
-                  <div className="p-2 rounded-xl bg-slate-50 border border-slate-200">
-                    <div className="text-[10px] text-slate-500 font-semibold">SUV</div>
-                    <div className="text-sm font-extrabold text-red-600">${route.suv_price}</div>
-                  </div>
-                  <div className="p-2 rounded-xl bg-slate-50 border border-slate-200">
-                    <div className="text-[10px] text-slate-500 font-semibold">Van</div>
-                    <div className="text-sm font-extrabold text-red-600">${route.van_price}</div>
-                  </div>
+                <div className={`grid gap-2 mt-4 pt-3 border-t border-slate-100 text-center ${visibleRouteVehicles(route).length === 1 ? 'grid-cols-1' : visibleRouteVehicles(route).length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+                  {visibleRouteVehicles(route).map((vehicle) => (
+                    <div key={vehicle.type} className="p-2 rounded-xl bg-slate-50 border border-slate-200">
+                      <div className="text-[10px] text-slate-500 font-semibold">{vehicle.shortLabel}</div>
+                      <div className="text-sm font-extrabold text-red-600">${vehicle.price}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -219,7 +240,7 @@ export const PopularRoutesSection: React.FC = () => {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <a
-                  href={getWhatsAppRouteUrl(route, 'Sedan')}
+                  href={getWhatsAppRouteUrl(route, defaultRouteVehicle(route))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 rounded-xl transition flex items-center justify-center"
@@ -227,6 +248,7 @@ export const PopularRoutesSection: React.FC = () => {
                 >
                   <MessageSquare className="w-4 h-4 text-red-600" />
                 </a>
+              </div>
               </div>
             </div>
           ))}

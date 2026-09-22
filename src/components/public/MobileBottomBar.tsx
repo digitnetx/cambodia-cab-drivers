@@ -10,7 +10,7 @@ export const MobileBottomBar: React.FC = () => {
   const isBook = currentPath === '/book';
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-t border-slate-200 px-3 py-2 shadow-2xl safe-area-pb">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-t border-slate-200 px-2 sm:px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-2xl">
       <div className="grid grid-cols-4 gap-1 items-center max-w-md mx-auto">
         
         {/* Home */}

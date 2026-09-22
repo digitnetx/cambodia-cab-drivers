@@ -44,13 +44,13 @@ export const Header: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between">
+        <div className="flex min-w-0 items-center justify-between gap-2">
           
           {/* Logo */}
           <a
             href="/"
             onClick={(event) => { event.preventDefault(); handleNavClick('/'); }}
-            className="flex items-center text-left focus:outline-none cursor-pointer"
+            className="flex min-w-0 items-center text-left focus:outline-none cursor-pointer"
             aria-label="Cambodia Taxi Cab Home"
           >
             <Logo variant="horizontal" size="md" />
@@ -135,7 +135,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="min-[900px]:hidden fixed inset-x-0 top-[58px] bg-white border-b border-slate-200 p-6 shadow-2xl animate-in slide-in-from-top-2 duration-200 text-slate-900">
+        <div className="min-[900px]:hidden fixed inset-x-0 top-[64px] max-h-[calc(100dvh-64px)] overflow-y-auto bg-white border-b border-slate-200 p-4 sm:p-6 shadow-2xl animate-in slide-in-from-top-2 duration-200 text-slate-900">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href;

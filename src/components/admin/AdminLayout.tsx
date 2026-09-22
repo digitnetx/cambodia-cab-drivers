@@ -94,9 +94,11 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeTab })
         </button>
       </div>
 
+      {sidebarOpen && <button aria-label="Close navigation" onClick={() => setSidebarOpen(false)} className="fixed inset-0 z-30 bg-slate-950/35 backdrop-blur-[1px] md:hidden" />}
+
       {/* Sidebar */}
       <aside
-        className={`fixed md:static inset-y-0 left-0 z-40 w-72 bg-white text-slate-700 border-r border-slate-200 flex flex-col justify-between p-4 transition-transform duration-300 transform ${
+        className={`fixed md:static inset-y-0 left-0 z-40 w-[min(18rem,calc(100vw-2rem))] md:w-72 bg-white text-slate-700 border-r border-slate-200 flex flex-col justify-between p-4 transition-transform duration-300 transform ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         } overflow-y-auto max-h-screen shadow-xs`}
       >

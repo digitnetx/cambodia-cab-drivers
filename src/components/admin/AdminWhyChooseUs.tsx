@@ -121,8 +121,8 @@ export const AdminWhyChooseUs: React.FC = () => {
 
       {/* Edit / Create Modal */}
       {isEditing && (
-        <div className="fixed inset-0 z-50 bg-[#070D1E]/80 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#0F1C3F] border border-[#1E2E5C] rounded-2xl w-full max-w-lg p-6 shadow-2xl space-y-5 my-8">
+        <div className="fixed inset-0 z-50 bg-[#070D1E]/80 backdrop-blur-xs flex items-start sm:items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-[#0F1C3F] border border-[#1E2E5C] rounded-2xl w-full max-w-lg max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain p-4 sm:p-6 shadow-2xl space-y-5 my-auto">
             
             <div className="flex items-center justify-between border-b border-[#1E2E5C] pb-4">
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
@@ -212,7 +212,7 @@ export const AdminWhyChooseUs: React.FC = () => {
                 </label>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#1E2E5C]">
+              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-[#1E2E5C]">
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}

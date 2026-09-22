@@ -275,7 +275,7 @@ const RouterContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-slate-900 flex flex-col font-sans selection:bg-red-600 selection:text-white pb-14 md:pb-0">
+    <div className="min-h-screen bg-[#FAF9F6] text-slate-900 flex flex-col font-sans selection:bg-red-600 selection:text-white pb-20 md:pb-0">
       <Header />
       <main className="flex-1">{viewComponent}</main>
       <AdSenseUnit />

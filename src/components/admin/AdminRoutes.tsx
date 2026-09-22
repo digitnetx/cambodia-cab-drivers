@@ -4,6 +4,7 @@ import { RoutePricing } from '../../types';
 import { Route, Plus, Edit, Trash2, Check, X, Search, DollarSign, Clock, MapPin, Sparkles } from 'lucide-react';
 import { ImageUploadField } from './ImageUploadField';
 import { imageSrc } from '../../lib/images';
+import { visibleRouteVehicles } from '../../lib/routeVehicles';
 
 export const AdminRoutes: React.FC = () => {
   const { routes = [], saveRoute, deleteRoute, siteSettings } = useApp();
@@ -33,6 +34,9 @@ export const AdminRoutes: React.FC = () => {
       sedan_price: 50,
       suv_price: 70,
       van_price: 100,
+      show_sedan: true,
+      show_suv: true,
+      show_van: true,
       currency: siteSettings.currency_settings.default_currency || 'USD',
       is_popular: true,
       is_airport: false,
@@ -54,6 +58,10 @@ export const AdminRoutes: React.FC = () => {
     e.preventDefault();
     if (!formData.origin || !formData.destination) {
       alert('Please enter origin and destination');
+      return;
+    }
+    if (!formData.show_sedan && !formData.show_suv && !formData.show_van) {
+      alert('Select at least one vehicle category to display for this route.');
       return;
     }
     const slug = formData.slug || `${formData.origin}-to-${formData.destination}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -159,19 +167,13 @@ export const AdminRoutes: React.FC = () => {
 
             {/* Pricing Matrix */}
             <div className="p-4 space-y-3">
-              <div className="grid grid-cols-3 gap-2 bg-[#FAF9F6] p-2.5 rounded-xl border border-slate-200 text-center">
-                <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-500 block">Sedan</span>
-                  <span className="text-sm font-black text-slate-900">${r.sedan_price}</span>
-                </div>
-                <div className="border-x border-slate-200">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 block">SUV</span>
-                  <span className="text-sm font-black text-slate-900">${r.suv_price}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-500 block">Van</span>
-                  <span className="text-sm font-black text-slate-900">${r.van_price}</span>
-                </div>
+              <div className={`grid gap-2 bg-[#FAF9F6] p-2.5 rounded-xl border border-slate-200 text-center ${visibleRouteVehicles(r).length === 1 ? 'grid-cols-1' : visibleRouteVehicles(r).length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+                {visibleRouteVehicles(r).map((vehicle) => (
+                  <div key={vehicle.type}>
+                    <span className="text-[10px] uppercase font-bold text-slate-500 block">{vehicle.shortLabel}</span>
+                    <span className="text-sm font-black text-slate-900">${vehicle.price}</span>
+                  </div>
+                ))}
               </div>
 
               <p className="text-xs text-slate-600 line-clamp-2">
@@ -309,12 +311,15 @@ export const AdminRoutes: React.FC = () => {
 
               {/* Price Matrix */}
               <div className="bg-[#FAF9F6] p-4 rounded-xl border border-slate-200 space-y-3">
-                <label className="block text-slate-900 font-bold uppercase tracking-wider text-[11px]">
-                  Fixed Vehicle Pricing ($ USD)
-                </label>
+                <div>
+                  <label className="block text-slate-900 font-bold uppercase tracking-wider text-[11px]">
+                    Fixed Vehicle Pricing ($ USD)
+                  </label>
+                  <p className="mt-1 text-[11px] text-slate-500">Choose exactly which vehicle prices are visible on this route. At least one option is required.</p>
+                </div>
                 <div className="grid grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-slate-600 text-[11px] mb-1">Sedan Rate ($)</label>
+                    <label className="flex items-center gap-1.5 text-slate-600 text-[11px] mb-1 cursor-pointer"><input type="checkbox" checked={formData.show_sedan ?? true} onChange={(e) => setFormData({ ...formData, show_sedan: e.target.checked })} className="accent-red-600" /> Show Sedan</label>
                     <input
                       type="number"
                       min="0"
@@ -324,7 +329,7 @@ export const AdminRoutes: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-slate-600 text-[11px] mb-1">SUV Rate ($)</label>
+                    <label className="flex items-center gap-1.5 text-slate-600 text-[11px] mb-1 cursor-pointer"><input type="checkbox" checked={formData.show_suv ?? true} onChange={(e) => setFormData({ ...formData, show_suv: e.target.checked })} className="accent-red-600" /> Show SUV</label>
                     <input
                       type="number"
                       min="0"
@@ -334,7 +339,7 @@ export const AdminRoutes: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-slate-600 text-[11px] mb-1">Executive Van Rate ($)</label>
+                    <label className="flex items-center gap-1.5 text-slate-600 text-[11px] mb-1 cursor-pointer"><input type="checkbox" checked={formData.show_van ?? true} onChange={(e) => setFormData({ ...formData, show_van: e.target.checked })} className="accent-red-600" /> Show Van</label>
                     <input
                       type="number"
                       min="0"

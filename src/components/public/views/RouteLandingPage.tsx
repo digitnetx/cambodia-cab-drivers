@@ -6,6 +6,8 @@ import { GoogleReviewsSection } from '../GoogleReviewsSection';
 import { WhyBookDirectSection } from '../WhyBookDirectSection';
 import { MapPin, Clock, ShieldCheck, CheckCircle2, MessageSquare, ArrowRight, Car, Sparkles, Navigation } from 'lucide-react';
 import { getWhatsAppRouteUrl, getTelegramUrl } from '../../../lib/whatsapp';
+import { defaultRouteVehicle, visibleRouteVehicles } from '../../../lib/routeVehicles';
+import { imageSrc } from '../../../lib/images';
 
 interface RouteLandingPageProps {
   routeSlug: string;
@@ -39,6 +41,8 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
     }).toString();
     navigate(`/book?${query}`);
   };
+  const defaultVehicle = defaultRouteVehicle(route);
+  const displayedVehicles = visibleRouteVehicles(route);
 
   return (
     <div className="pt-24 pb-20 bg-[#FAF9F6] text-slate-800">
@@ -50,7 +54,7 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
         <div className="mt-6 mb-12 relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-950 text-white">
           <div className="absolute inset-0 z-0">
             <img
-              src={route.is_airport ? '/back4.webp' : '/back5.jpg'}
+              src={imageSrc(route) || (route.is_airport ? '/back4.webp' : '/back5.jpg')}
               alt={route.route_name}
               className="w-full h-full object-cover object-center opacity-30 scale-105"
               referrerPolicy="no-referrer"
@@ -89,14 +93,14 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
                 </div>
                 <div className="pl-3">
                   <span className="text-[11px] text-slate-300 font-semibold block">Starting From</span>
-                  <span className="text-sm sm:text-base font-extrabold text-red-400">${route.sedan_price} USD</span>
+                  <span className="text-sm sm:text-base font-extrabold text-red-400">${displayedVehicles[0]?.price} USD</span>
                 </div>
               </div>
 
               {/* Direct Booking and WhatsApp Actions */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
-                  onClick={() => handleBookNow('Sedan')}
+                  onClick={() => handleBookNow(defaultVehicle)}
                   className="px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs sm:text-sm rounded-xl transition shadow-lg shadow-red-600/30 flex items-center gap-2 cursor-pointer"
                 >
                   <span>Book This Route Online</span>
@@ -104,7 +108,7 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
                 </button>
 
                 <a
-                  href={getWhatsAppRouteUrl(route, 'Sedan')}
+                  href={getWhatsAppRouteUrl(route, defaultVehicle)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-5 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-xs sm:text-sm rounded-xl transition flex items-center gap-2"
@@ -136,10 +140,10 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className={`grid grid-cols-1 gap-6 ${displayedVehicles.length === 1 ? 'md:grid-cols-1 max-w-md mx-auto' : displayedVehicles.length === 2 ? 'md:grid-cols-2 max-w-4xl mx-auto' : 'md:grid-cols-3'}`}>
             
             {/* Sedan Option */}
-            <div className="bg-[#FAF9F6] border border-slate-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-500/50 transition shadow-xs">
+            {route.show_sedan !== false && <div className="bg-[#FAF9F6] border border-slate-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-500/50 transition shadow-xs">
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold text-slate-500 uppercase">Sedan</span>
@@ -170,10 +174,10 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
               >
                 Book Sedan (${route.sedan_price})
               </button>
-            </div>
+            </div>}
 
             {/* SUV Option */}
-            <div className="bg-white border-2 border-red-600 rounded-2xl p-6 flex flex-col justify-between shadow-md relative">
+            {route.show_suv !== false && <div className="bg-white border-2 border-red-600 rounded-2xl p-6 flex flex-col justify-between shadow-md relative">
               <div className="absolute -top-3 right-6 bg-red-600 text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full">
                 Recommended
               </div>
@@ -207,10 +211,10 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
               >
                 Book SUV (${route.suv_price})
               </button>
-            </div>
+            </div>}
 
             {/* Van Option */}
-            <div className="bg-[#FAF9F6] border border-slate-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-500/50 transition shadow-xs">
+            {route.show_van !== false && <div className="bg-[#FAF9F6] border border-slate-200 rounded-2xl p-6 flex flex-col justify-between hover:border-red-500/50 transition shadow-xs">
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold text-slate-500 uppercase">Van</span>
@@ -241,7 +245,7 @@ export const RouteLandingPage: React.FC<RouteLandingPageProps> = ({ routeSlug })
               >
                 Book Van (${route.van_price})
               </button>
-            </div>
+            </div>}
 
           </div>
         </div>

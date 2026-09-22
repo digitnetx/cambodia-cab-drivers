@@ -12,7 +12,7 @@ export const FloatingWhatsApp: React.FC = () => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => showToast('Opening WhatsApp to message driver team...', 'success')}
-      className="fixed bottom-6 left-6 z-40 flex items-center gap-2 px-4 py-3 bg-white hover:bg-slate-50 text-slate-800 font-medium rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-red-500 border border-slate-200"
+      className="fixed bottom-20 left-4 sm:bottom-6 sm:left-6 z-40 flex items-center gap-2 px-3 sm:px-4 py-3 bg-white hover:bg-slate-50 text-slate-800 font-medium rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-red-500 border border-slate-200"
       aria-label="Contact Driver Team via WhatsApp"
     >
       <div className="relative">

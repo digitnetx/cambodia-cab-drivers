@@ -63,6 +63,9 @@ export interface RoutePricing {
   sedan_price: number;
   suv_price: number;
   van_price: number;
+  show_sedan?: boolean;
+  show_suv?: boolean;
+  show_van?: boolean;
   currency?: string;
   is_popular: boolean;
   is_airport: boolean;

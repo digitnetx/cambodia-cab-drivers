@@ -134,8 +134,8 @@ export const AdminTours: React.FC = () => {
 
       {/* Editor Modal */}
       {editingTour && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <form onSubmit={handleSave} className="bg-white border border-slate-200/90 rounded-2xl max-w-3xl w-full p-6 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl relative">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-start sm:items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <form onSubmit={handleSave} className="bg-white border border-slate-200/90 rounded-2xl max-w-3xl w-full p-4 sm:p-6 space-y-6 max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain shadow-2xl relative my-auto">
             
             <button
               type="button"
@@ -243,7 +243,7 @@ export const AdminTours: React.FC = () => {
                 />
               </div>
 
-              <div className="flex items-center gap-6 sm:col-span-2 pt-2">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 sm:col-span-2 pt-2">
                 <label className="flex items-center gap-2 text-xs text-slate-800 font-semibold cursor-pointer">
                   <input
                     type="checkbox"
@@ -272,7 +272,7 @@ export const AdminTours: React.FC = () => {
               </p>
             )}
 
-            <div className="pt-4 border-t border-slate-100 flex justify-end gap-3">
+            <div className="sticky bottom-0 -mx-4 sm:-mx-6 px-4 sm:px-6 pb-1 pt-4 bg-white border-t border-slate-100 flex flex-col-reverse sm:flex-row justify-end gap-3">
               <button
                 type="button"
                 onClick={() => { setSaveError(''); setEditingTour(null); }}
