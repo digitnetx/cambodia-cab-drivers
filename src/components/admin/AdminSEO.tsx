@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { SEOSettings } from '../../types';
+import { INITIAL_SEO_SETTINGS } from '../../lib/data';
 import { Search, Save, Globe, Share2, Tag, X, Plus } from 'lucide-react';
 
 export const AdminSEO: React.FC = () => {
   const { seoSettings, updateSEOSettings } = useApp();
-  const [formData, setFormData] = useState<SEOSettings>(seoSettings);
+  const getCompleteSettings = (settings: SEOSettings): SEOSettings => ({
+    ...INITIAL_SEO_SETTINGS,
+    ...Object.fromEntries(Object.entries(settings).filter(([, value]) => value !== null && value !== undefined)),
+  } as SEOSettings);
+  const [formData, setFormData] = useState<SEOSettings>(() => getCompleteSettings(seoSettings));
   const [keywordInput, setKeywordInput] = useState('');
+
+  // Settings arrive asynchronously from Supabase. Keep required fields usable if an
+  // older record contains null values, rather than leaving the Save button blocked.
+  useEffect(() => {
+    setFormData(getCompleteSettings(seoSettings));
+  }, [seoSettings]);
 
   const handleAddKeyword = () => {
     if (!keywordInput.trim()) return;
@@ -42,14 +53,15 @@ export const AdminSEO: React.FC = () => {
         </div>
 
         <button
-          onClick={handleSubmit}
+          type="submit"
+          form="seo-settings-form"
           className="flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-red-600/20 self-start sm:self-auto cursor-pointer"
         >
           <Save className="w-4 h-4" /> Save SEO Settings
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 text-xs">
+      <form id="seo-settings-form" onSubmit={handleSubmit} className="space-y-6 text-xs">
         
         {/* Google Search Preview */}
         <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-3 shadow-xs">

@@ -50,6 +50,8 @@ export const VehicleSelectionSection: React.FC = () => {
                     src={imageSrc(vehicle)}
                     alt={`${vehicle.name} Cambodia taxi`}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
                   />
                   
                   {/* Top Badge */}

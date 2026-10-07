@@ -101,29 +101,21 @@ export const HomePage: React.FC = () => {
         
         {/* Sliding Background Images Carousel Container */}
         <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none">
-          {HERO_SLIDES.map((slide, index) => {
-            const isActive = index === currentSlide;
-            return (
-              <div
-                key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  isActive ? 'opacity-75 z-1' : 'opacity-0 z-0'
-                }`}
-              >
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  className={`w-full h-full object-cover object-center transition-transform duration-[7000ms] ease-out ${
-                    isActive ? 'scale-105' : 'scale-100'
-                  }`}
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = slide.fallback;
-                  }}
-                />
-              </div>
-            );
-          })}
+          {HERO_SLIDES.map((slide, index) => index === currentSlide && (
+            <div key={slide.id} className="absolute inset-0 opacity-75">
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="h-full w-full scale-105 object-cover object-center transition-transform duration-[7000ms] ease-out"
+                fetchPriority="high"
+                decoding="async"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = slide.fallback;
+                }}
+              />
+            </div>
+          ))}
 
           {/* Legibility and Ambient Lighting Gradients */}
           <div className="absolute inset-0 z-2 bg-gradient-to-r from-[#071B2E]/95 via-[#071B2E]/82 to-[#071B2E]/35" />

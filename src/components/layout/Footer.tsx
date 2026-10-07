@@ -7,6 +7,8 @@ import { Logo } from '../common/Logo';
 export const Footer: React.FC = () => {
   const { navigate, siteSettings } = useApp();
   const bookingEmail = 'sarethtaxidriver@gmail.com';
+  const googleMapsUrl = 'https://maps.app.goo.gl/UsevSgMLoGkyJcZ8A?g_st=ac';
+  const googleMapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3216.7613227275383!2d104.9255192!3d11.553593599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095110cb666865%3A0x1d5aa7472f3b5988!2sCambodia%20Taxi%20Cab!5e1!3m2!1sen!2stz!4v1791265421701!5m2!1sen!2stz';
 
   const handleNavClick = (href: string) => {
     navigate(href);
@@ -29,6 +31,40 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#F5F4F0] text-slate-700 border-t border-slate-200 pt-16 pb-12 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section className="mb-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+              <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-red-600">
+                <MapPin className="h-3.5 w-3.5" />
+                Find Cambodia Taxi Cab
+              </div>
+              <h2 className="text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">Meet your driver in Cambodia</h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                View Cambodia Taxi Cab on Google Maps and contact our driver team for airport pickups, private transfers, and tours.
+              </p>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex w-fit items-center gap-2 rounded-xl bg-red-600 px-4 py-2.5 text-xs font-bold text-white shadow-md shadow-red-600/20 transition hover:bg-red-700"
+              >
+                Open in Google Maps
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="min-h-72 border-t border-slate-200 lg:border-t-0 lg:border-l">
+              <iframe
+                src={googleMapsEmbedUrl}
+                title="Cambodia Taxi Cab location on Google Maps"
+                className="h-full min-h-72 w-full border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+          </div>
+        </section>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-200">
           
           {/* Col 1 & 2: Branding & Intro */}

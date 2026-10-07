@@ -112,14 +112,15 @@ export const AdminSettings: React.FC = () => {
         </div>
 
         <button
-          onClick={handleSubmit}
+          type="submit"
+          form="website-settings-form"
           className="flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-red-600/20 self-start sm:self-auto cursor-pointer"
         >
           <Save className="w-4 h-4" /> Save All Settings
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 text-xs">
+      <form id="website-settings-form" onSubmit={handleSubmit} className="space-y-6 text-xs">
         
         {/* Business Identity */}
         <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-xs">

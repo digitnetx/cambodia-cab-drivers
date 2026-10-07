@@ -4,7 +4,7 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { FloatingWhatsApp } from './components/layout/FloatingWhatsApp';
 import { MobileBottomBar } from './components/public/MobileBottomBar';
-import { AdSenseUnit } from './components/public/AdSenseUnit';
+import { GoogleProfileReviewsSection } from './components/public/GoogleProfileReviewsSection';
 import { Toast } from './components/layout/Toast';
 
 // Public views
@@ -56,7 +56,7 @@ const RouterContent: React.FC = () => {
 
   // Dynamic SEO & Title Synchronization
   useEffect(() => {
-    let title = seoSettings?.meta_title || 'Cambodia Taxi Cab — Private Taxi & Tour Driver Service in Cambodia';
+    let title = seoSettings?.meta_title || 'Cambodia Taxi Cab | Private Taxi & Tours';
     let description = seoSettings?.meta_description || 'Direct door-to-door private transfers, airport pickups, and tours in Cambodia with professional drivers on cambodiataxicab.com.';
 
     // Admin Routes
@@ -69,7 +69,7 @@ const RouterContent: React.FC = () => {
     }
     // Public Routes
     else if (pathWithoutQuery === '/') {
-      title = seoSettings?.meta_title || 'Cambodia Taxi Cab — Private Taxi & Tour Driver Service in Cambodia';
+      title = seoSettings?.meta_title || 'Cambodia Taxi Cab | Private Taxi & Tours';
     } else if (pathWithoutQuery === '/airport-transfers') {
       title = 'Phnom Penh & Siem Reap Airport Transfers | Cambodia Taxi Cab';
       description = 'Fixed price airport taxi pickups at Phnom Penh (PNH) and Siem Reap Angkor (SAI) with flight delay monitoring.';
@@ -278,7 +278,7 @@ const RouterContent: React.FC = () => {
     <div className="min-h-screen bg-[#FAF9F6] text-slate-900 flex flex-col font-sans selection:bg-red-600 selection:text-white pb-20 md:pb-0">
       <Header />
       <main className="flex-1">{viewComponent}</main>
-      <AdSenseUnit />
+      <GoogleProfileReviewsSection />
       <Footer />
       <FloatingWhatsApp />
       <MobileBottomBar />

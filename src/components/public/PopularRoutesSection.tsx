@@ -117,6 +117,8 @@ export const PopularRoutesSection: React.FC = () => {
                         src={imageSrc(route) || 'https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=320&auto=format&fit=crop'}
                         alt={`${route.route_name} private taxi route`}
                         className="h-11 w-16 rounded-lg object-cover border border-slate-200 shrink-0"
+                        loading="lazy"
+                        decoding="async"
                       />
                       <div>
                         <div className="font-bold text-slate-900 flex items-center gap-2">
@@ -193,6 +195,8 @@ export const PopularRoutesSection: React.FC = () => {
                   src={imageSrc(route) || 'https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=900&auto=format&fit=crop'}
                   alt={`${route.route_name} private taxi route`}
                   className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/75 via-transparent to-transparent" />
                 <span className="absolute left-3 top-3 text-[10px] font-bold uppercase tracking-wider text-white bg-red-600 px-2 py-1 rounded-md">

@@ -1009,8 +1009,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       ...seoSettings,
       ...newSeo,
     };
+    const saved = await api.updateSingleton('seoSettings', updated);
+    if (!saved) {
+      showToast(`SEO settings were not saved: ${api.getLastWriteError() || 'Check your Supabase permissions and schema.'}`, 'error');
+      return;
+    }
     setSeoSettings(updated);
-    await api.updateSingleton('seoSettings', updated);
     showToast('SEO settings saved to database');
   };
 
