@@ -7,7 +7,7 @@ import { imageSrc } from '../../lib/images';
 import { visibleRouteVehicles } from '../../lib/routeVehicles';
 
 export const AdminRoutes: React.FC = () => {
-  const { routes = [], saveRoute, deleteRoute, siteSettings } = useApp();
+  const { routes = [], saveRoute, deleteRoute, siteSettings, showToast } = useApp();
   const [search, setSearch] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [selectedRoute, setSelectedRoute] = useState<RoutePricing | null>(null);
@@ -57,11 +57,11 @@ export const AdminRoutes: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.origin || !formData.destination) {
-      alert('Please enter origin and destination');
+      showToast('Please enter an origin and destination.', 'error');
       return;
     }
     if (!formData.show_sedan && !formData.show_suv && !formData.show_van) {
-      alert('Select at least one vehicle category to display for this route.');
+      showToast('Select at least one vehicle category to display for this route.', 'error');
       return;
     }
     const slug = formData.slug || `${formData.origin}-to-${formData.destination}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');

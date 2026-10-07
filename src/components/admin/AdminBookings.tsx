@@ -11,7 +11,7 @@ import { getWhatsAppBookingUrl } from '../../lib/whatsapp';
 export const AdminBookings: React.FC = () => {
   const { 
     bookings = [], updateBookingStatus, updateBookingDetails, deleteBooking, 
-    addBooking, vehicles = [], routes = [], services = [], siteSettings 
+    addBooking, vehicles = [], routes = [], services = [], siteSettings, showToast
   } = useApp();
 
   const [search, setSearch] = useState('');
@@ -77,7 +77,7 @@ export const AdminBookings: React.FC = () => {
   const handleSaveCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.customer_name || !formData.pickup_location || !formData.destination) {
-      alert('Please fill in required booking details.');
+      showToast('Please fill in the required booking details.', 'error');
       return;
     }
     await addBooking({

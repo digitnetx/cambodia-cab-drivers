@@ -6,7 +6,7 @@ import { ImageUploadField } from './ImageUploadField';
 import { featuredImageSrc } from '../../lib/images';
 
 export const AdminServices: React.FC = () => {
-  const { services, saveService, deleteService, siteSettings } = useApp();
+  const { services, saveService, deleteService, siteSettings, showToast } = useApp();
   const [isEditing, setIsEditing] = useState(false);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
@@ -58,7 +58,7 @@ export const AdminServices: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name) {
-      alert('Please enter service name');
+      showToast('Please enter a service name.', 'error');
       return;
     }
     const slug = formData.slug || formData.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');

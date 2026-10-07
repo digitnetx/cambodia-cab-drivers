@@ -4,7 +4,7 @@ import { WhyChooseUsBenefit } from '../../types';
 import { Shield, Plus, Edit, Trash2, X, DollarSign, MessageSquare, Award, Sparkles, Clock, ShieldCheck } from 'lucide-react';
 
 export const AdminWhyChooseUs: React.FC = () => {
-  const { whyChooseUs, saveWhyChooseUsBenefit, deleteWhyChooseUsBenefit } = useApp();
+  const { whyChooseUs, saveWhyChooseUsBenefit, deleteWhyChooseUsBenefit, showToast } = useApp();
   const [isEditing, setIsEditing] = useState(false);
   const [selectedBenefit, setSelectedBenefit] = useState<WhyChooseUsBenefit | null>(null);
 
@@ -32,7 +32,7 @@ export const AdminWhyChooseUs: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || !formData.description) {
-      alert('Please fill in title and description');
+      showToast('Please fill in title and description.', 'error');
       return;
     }
     await saveWhyChooseUsBenefit(formData);

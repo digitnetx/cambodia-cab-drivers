@@ -6,7 +6,7 @@ import { ImageUploadField } from './ImageUploadField';
 import { imageSrc } from '../../lib/images';
 
 export const AdminAirports: React.FC = () => {
-  const { airports = [], saveAirport, deleteAirport, routes = [], siteSettings } = useApp();
+  const { airports = [], saveAirport, deleteAirport, routes = [], siteSettings, showToast } = useApp();
   const [search, setSearch] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [selectedAirport, setSelectedAirport] = useState<Airport | null>(null);
@@ -45,7 +45,7 @@ export const AdminAirports: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.code) {
-      alert('Please fill airport name and code');
+      showToast('Please fill in the airport name and code.', 'error');
       return;
     }
     await saveAirport(formData);

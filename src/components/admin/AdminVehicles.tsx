@@ -6,7 +6,7 @@ import { ImageUploadField } from './ImageUploadField';
 import { imageSrc } from '../../lib/images';
 
 export const AdminVehicles: React.FC = () => {
-  const { vehicles, saveVehicle, deleteVehicle, siteSettings } = useApp();
+  const { vehicles, saveVehicle, deleteVehicle, siteSettings, showToast } = useApp();
   const [isEditing, setIsEditing] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
 
@@ -57,7 +57,7 @@ export const AdminVehicles: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.models) {
-      alert('Please fill in vehicle name and models');
+      showToast('Please fill in the vehicle name and models.', 'error');
       return;
     }
     await saveVehicle(formData);

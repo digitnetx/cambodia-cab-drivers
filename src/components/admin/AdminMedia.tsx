@@ -35,7 +35,7 @@ export const AdminMedia: React.FC = () => {
   const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || (!formData.url && !formData.binary_data)) {
-      alert('Please provide an asset title and either an image URL or an uploaded image.');
+      showToast('Please provide an asset title and either an image URL or an uploaded image.', 'error');
       return;
     }
     await saveMediaItem(formData);

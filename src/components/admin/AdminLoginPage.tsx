@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Lock, Mail, ShieldCheck, ArrowRight } from 'lucide-react';
 import { Logo } from '../common/Logo';
+import { Toast } from '../layout/Toast';
 
 export const AdminLoginPage: React.FC = () => {
   const { loginAdmin, navigate } = useApp();
@@ -20,6 +21,7 @@ export const AdminLoginPage: React.FC = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen bg-slate-950 font-sans flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#1e3a5f_0,_#0f172a_45%,_#020617_100%)]" />
       <div className="absolute -top-32 -left-24 w-96 h-96 bg-red-600/20 blur-3xl rounded-full" />
@@ -97,5 +99,7 @@ export const AdminLoginPage: React.FC = () => {
 
       </div>
     </div>
+    <Toast />
+    </>
   );
 };

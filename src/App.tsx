@@ -226,7 +226,12 @@ const RouterContent: React.FC = () => {
       adminComponent = <AdminSettings />;
     }
 
-    return <AdminLayout activeTab={activeTab}>{adminComponent}</AdminLayout>;
+    return (
+      <>
+        <AdminLayout activeTab={activeTab}>{adminComponent}</AdminLayout>
+        <Toast />
+      </>
+    );
   }
 
   // Public Route Matching
